@@ -7,25 +7,10 @@ import os
 import random
 
 from ..utils import admin_cmd, sudo_cmd
-from . import (
-    CMD_HELP,
-    LOGS,
-    add_frame,
-    asciiart,
-    cat_meeme,
-    cat_meme,
-    convert_toimage,
-    convert_tosticker,
-    crop,
-    flip_image,
-    grayscale,
-    invert_colors,
-    mirror_file,
-    reply_id,
-    runcmd,
-    solarize,
-    take_screen_shot,
-)
+from . import (CMD_HELP, LOGS, add_frame, asciiart, cat_meeme, cat_meme,
+               convert_toimage, convert_tosticker, crop, flip_image, grayscale,
+               invert_colors, mirror_file, reply_id, runcmd, solarize,
+               take_screen_shot)
 
 
 def random_color():

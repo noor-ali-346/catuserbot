@@ -14,7 +14,8 @@ from time import gmtime, strftime
 
 from telethon import events
 from telethon.tl.functions.channels import GetParticipantRequest
-from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
+from telethon.tl.types import (ChannelParticipantAdmin,
+                               ChannelParticipantCreator)
 
 from var import Var
 

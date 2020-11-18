@@ -11,7 +11,8 @@ import requests
 from cowpy import cow
 from telethon import functions, types
 from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import ChannelParticipantsAdmins, MessageEntityMentionName
+from telethon.tl.types import (ChannelParticipantsAdmins,
+                               MessageEntityMentionName)
 
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 from . import ALIVE_NAME, BOTLOG, BOTLOG_CHATID, CMD_HELP, catmemes
