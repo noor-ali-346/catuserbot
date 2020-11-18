@@ -5,8 +5,8 @@ import io
 import sys
 import traceback
 
-from . import CMD_HELP, yaml_format
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from . import CMD_HELP, yaml_format
 
 
 @bot.on(admin_cmd(pattern="bash (.*)"))
