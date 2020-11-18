@@ -232,7 +232,7 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
         return await event.edit(text, parse_mode=parse_mode, link_preview=link_preview)
     asciich = ["*","`","_"]
     for i in asciich:
-        text =  re.sub(rf"\b{i}\b", "", text)
+        text =  re.sub(rf"\b\{i}\b", "", text)
     if aslink:
         linktext= linktext or "Message was to big so pasted to nekobin"
         key = requests.post("https://nekobin.com/api/documents", json={"content": text}).json().get("result").get("key")
