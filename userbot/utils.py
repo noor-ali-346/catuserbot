@@ -6,8 +6,10 @@ import logging
 import math
 import os
 import re
+import io
 import sys
 import time
+import requests
 import traceback
 from pathlib import Path
 from time import gmtime, strftime
@@ -216,17 +218,41 @@ def sudo_cmd(pattern=None, command=None, **args):
 
 # https://t.me/c/1220993104/623253
 # https://docs.telethon.dev/en/latest/misc/changelog.html#breaking-changes
-async def edit_or_reply(event, text, parse_mode=None, link_preview=None):
+async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_name=None,aslink=False,linktext=None):
     link_preview = link_preview or False
-    parse_mode = parse_mode or "md"
+    if len(text) < 4096:
+        parse_mode = parse_mode or "md"
+        if event.sender_id in Config.SUDO_USERS:
+            reply_to = await event.get_reply_message()
+            if reply_to:
+                return await reply_to.reply(
+                    text, parse_mode=parse_mode, link_preview=link_preview
+                )
+            return await event.reply(text, parse_mode=parse_mode, link_preview=link_preview)
+        return await event.edit(text, parse_mode=parse_mode, link_preview=link_preview)
+    if aslink:
+        linktext= linktext or "Message was to big so pasted to nekobin"
+        key = requests.post("https://nekobin.com/api/documents", json={"content": text}).json().get("result").get("key")
+        text = linktext + f" [here](https://nekobin.com/{key})"
+        if event.sender_id in Config.SUDO_USERS:
+            reply_to = await event.get_reply_message()
+            if reply_to:
+                return await reply_to.reply(
+                    text, link_preview=link_preview
+                )
+            return await event.reply(text, link_preview=link_preview)
+        return await event.edit(text, link_preview=link_preview)
+    file_name = file_name or "output.txt"
+    with io.BytesIO(str.encode(text))) as out_file:
+        out_file.name = file_name
+    reply_to = await event.get_reply_message()
+    if reply_to:
+        return await reply_to.reply(file=out_file)
     if event.sender_id in Config.SUDO_USERS:
-        reply_to = await event.get_reply_message()
-        if reply_to:
-            return await reply_to.reply(
-                text, parse_mode=parse_mode, link_preview=link_preview
-            )
-        return await event.reply(text, parse_mode=parse_mode, link_preview=link_preview)
-    return await event.edit(text, parse_mode=parse_mode, link_preview=link_preview)
+        return await event.reply(file=out_file)
+    return await event.client.send_file(event.chat_id , out_file)
+
+
 
 
 # from paperplaneextended
