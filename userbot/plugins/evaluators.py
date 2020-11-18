@@ -81,13 +81,10 @@ async def _(event):
 @bot.on(admin_cmd(pattern="eval (.*)"))
 @bot.on(sudo_cmd(pattern="eval (.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from or event.via_bot_id:
+    if event.via_bot_id:
         return
     cmd = event.text.split(" ", maxsplit=1)[1]
-    reply_to_id = event.message.id
-    if event.reply_to_msg_id:
-        reply_to_id = event.reply_to_msg_id
-    event = await edit_or_reply(event, "Processing ...")
+    catevent = await edit_or_reply(event, "Processing ...")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -110,37 +107,16 @@ async def _(event):
         evaluation = stdout
     else:
         evaluation = "Success"
-    final_output = "**EVAL**: `{}` \n\n **OUTPUT**: \n`{}` \n".format(cmd, evaluation)
-    if len(final_output) > Config.MAX_MESSAGE_SIZE_LIMIT:
-        with io.BytesIO(str.encode(final_output)) as out_file:
-            out_file.name = "eval.text"
-            try:
-                await event.client.send_file(
-                    event.chat_id,
-                    out_file,
-                    force_document=True,
-                    allow_cache=False,
-                    caption=cmd,
-                    reply_to=reply_to_id,
-                )
-                await event.delete()
-            except:
-                await event.client.send_file(
-                    event.chat_id,
-                    out_file,
-                    force_document=True,
-                    allow_cache=False,
-                    reply_to=reply_to_id,
-                )
-                await event.delete()
-    else:
-        await event.edit(final_output)
+    final_output = f"**  •  Eval : **:\n`{cmd}` \n\n**  •  OUTPUT**: \n`{evaluation}` \n"
+    await edit_or_reply(catevent ,text=final_output, aslink=True, linktext="`The output of the given python expression is ")
 
 
-async def aexec(code, event):
-    exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
-    return await locals()["__aexec"](event)
-
+async def aexec(code, smessatatus):
+    message = event = smessatatus
+    p = lambda _x: print(yaml_format(_x))
+    reply = await event.get_reply_message()
+    exec(f'async def __aexec(message, event , reply, client, p): ' +'\n event = smessatatus = message' + ''.join(f'\n {l}' for l in code.split('\n')))
+    return await locals()['__aexec'](message, event ,reply, message.client, p)
 
 CMD_HELP.update(
     {
