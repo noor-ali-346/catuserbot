@@ -18,7 +18,7 @@ jobs:
           pip install yapf autoflake isort black
       - name: reformat by yapf
         run: |
-          yapf --recursive .
+          yapf --recursive --diff --style='{based_on_style: pep8, indent_width: 4}' .
       - name: Remove unused imports and variables
         run: |
           autoflake --in-place --recursive --remove-all-unused-imports --remove-unused-variables --ignore-init-module-imports .
