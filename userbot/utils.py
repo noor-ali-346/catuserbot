@@ -242,7 +242,7 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
             return await event.reply(text, link_preview=link_preview)
         return await event.edit(text, link_preview=link_preview)
     file_name = file_name or "output.txt"
-    with io.BytesIO(str.encode(text))) as out_file:
+    with io.BytesIO(str.encode(text)) as out_file:
         out_file.name = file_name
     if reply_to:
         return await reply_to.reply(file=out_file)
