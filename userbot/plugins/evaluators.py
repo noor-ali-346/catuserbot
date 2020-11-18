@@ -108,7 +108,7 @@ async def _(event):
     else:
         evaluation = "Success"
     final_output = f"**•  Eval : **\n`{cmd}` \n\n**•  Result : **\n`{evaluation}` \n"
-    await edit_or_reply(catevent ,text=final_output, aslink=True, linktext="`The output of the given python expression is `")
+    await edit_or_reply(catevent ,text=final_output, aslink=True, linktext="**•  Eval : **\n`{cmd}` \n\n**•  Result : **\n")
 
 
 async def aexec(code, smessatatus):
