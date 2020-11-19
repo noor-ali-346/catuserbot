@@ -57,7 +57,7 @@ async def endecrypt(event):
             if not reply:
                 return await event.delete(event , "`What should i encode`")
             mediatype = media_type(reply)
-            if mediatype is not None:
+            if mediatype is None:
                 result = base64.b64encode(bytes(reply.text, "utf-8")).decode("utf-8")
             else:
                 catevent = await edit_or_reply(event , "`Encoding ...`")
