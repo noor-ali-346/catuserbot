@@ -230,12 +230,12 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
                 )
             return await event.reply(text, parse_mode=parse_mode, link_preview=link_preview)
         return await event.edit(text, parse_mode=parse_mode, link_preview=link_preview)
-    asciich = ["*","`","_"]
+    asciich = ["*","`","_",""]
     for i in asciich:
         text =  re.sub(rf"\{i}", "", text)
     if aslink:
         linktext= linktext or "Message was to big so pasted to nekobin"
-        kresult = requests.post("https://del.dog/documents", data=text.encode("UTF-8")).json()
+        kresult = requests.post("https://del.dog/documents", data=text).json()
         text = linktext + f" [here](https://del.dog/{kresult['key']})"
         if event.sender_id in Config.SUDO_USERS:
             if reply_to:
@@ -245,8 +245,8 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
             return await event.reply(text, link_preview=link_preview)
         return await event.edit(text, link_preview=link_preview)
     file_name = file_name or "output.txt"
-    with io.BytesIO(str.encode(text)) as out_file:
-        out_file.name = file_name
+    with open(file_name, "w+") as output:
+            output.write(result)
     if reply_to:
         return await reply_to.reply(file=out_file)
     if event.sender_id in Config.SUDO_USERS:
