@@ -235,8 +235,8 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
         text =  re.sub(rf"\{i}", "", text)
     if aslink:
         linktext= linktext or "Message was to big so pasted to nekobin"
-        key = requests.post("https://nekobin.com/api/documents", json={"content": text}).json().get("result").get("key")
-        text = linktext + f" [here](https://nekobin.com/{key})"
+        kresult = requests.post("https://del.dog/documents", data=text.encode("UTF-8")).json()
+        text = linktext + f" [here](https://del.dog/{kresult['key']})"
         if event.sender_id in Config.SUDO_USERS:
             if reply_to:
                 return await reply_to.reply(
