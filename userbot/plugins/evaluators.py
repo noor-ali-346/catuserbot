@@ -15,7 +15,7 @@ from . import *
 async def _(event):
     if event.fwd_from:
         return
-    cmd = event.pattern_match.group(1)
+    cmd = "".join(event.text.split(maxsplit=1)[1:])
     catevent = await edit_or_reply(event, "`Executing.....`")
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
@@ -45,7 +45,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    cmd = event.pattern_match.group(1)
+    cmd = "".join(event.text.split(maxsplit=1)[1:])
     catevent = await edit_or_reply(event, "`Running ...`")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
