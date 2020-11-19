@@ -10,8 +10,8 @@ from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 from . import *
 
 
-@bot.on(admin_cmd(pattern="exec(?: |$|\n)(.*)"))
-@bot.on(sudo_cmd(pattern="exec(?: |$|\n)(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="exec(?: |$|\n)(.*)", command="exec"))
+@bot.on(sudo_cmd(pattern="exec(?: |$|\n)(.*)", command="exec", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -42,8 +42,8 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern="eval(?: |$|\n)(.*)"))
-@bot.on(sudo_cmd(pattern="eval(?: |$|\n)(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="eval(?: |$|\n)(.*)", command="eval"))
+@bot.on(sudo_cmd(pattern="eval(?: |$|\n)(.*)", command="eval", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -95,9 +95,7 @@ CMD_HELP.update(
         \n\n  •  **Synatax : **`.eval <expr>`:\
         \n  •  **Function : **__Execute Python script.__\
         \n\n  •  **Synatax : **`.exec <command>`:\
-        \n  •  **Function : **__Execute a bash command on catuserbot server and shows details.__\
-        \n\n  •  **Synatax : **`.bash <command>`:\
-        \n  •  **Function : **__Execute a bash command on catuserbot server and  easy to copy output__\
+        \n  •  **Function : **__Execute a Terminal command on catuserbot server and shows details.__\
      "
     }
 )
