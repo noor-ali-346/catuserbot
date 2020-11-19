@@ -10,8 +10,6 @@ from .sql_helper.welcomesql import (addwelcome_setting,
 
 @bot.on(events.ChatAction)
 async def _(event):
-    if event.fwd_from:
-        return
     cws = getcurrent_welcome_settings(event.chat_id)
     if (
         cws
@@ -75,6 +73,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"savepwel ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"savepwel ?(.*)", allow_sudo=True))
 async def save_welcome(event):
+    if event.fwd_from:
+        return
     msg = await event.get_reply_message()
     string = "".join(event.text.split(maxsplit=1)[1:])
     msg_id = None
@@ -111,6 +111,8 @@ async def save_welcome(event):
 @bot.on(admin_cmd(pattern="clearpwel$"))
 @bot.on(sudo_cmd(pattern="clearpwel$", allow_sudo=True))
 async def del_welcome(event):
+    if event.fwd_from:
+        return
     if rmwelcome_setting(event.chat_id) is True:
         await edit_or_reply(event, "`Welcome note deleted for this chat.`")
     else:
@@ -120,6 +122,8 @@ async def del_welcome(event):
 @bot.on(admin_cmd(pattern="listpwel$"))
 @bot.on(sudo_cmd(pattern="listpwel$", allow_sudo=True))
 async def show_welcome(event):
+    if event.fwd_from:
+        return
     cws = getcurrent_welcome_settings(event.chat_id)
     if not cws:
         await edit_or_reply(event, "`No pwelcome message saved here.`")
@@ -140,14 +144,14 @@ async def show_welcome(event):
 CMD_HELP.update(
     {
         "privatewelcome": "**Plugin :** `privatewelcome`\
-\n\n**Syntax :** `.savepwel` <welcome message> or reply to a message with .savepwel\
-\n**Usage :** Saves the message as a welcome note in the chat.\
-\n\nAvailable variables for formatting welcome messages :\
+\n\n  •  **Syntax :** `.savepwel` <welcome message> or reply to a message with .savepwel\
+\n  •  **Function :** Saves the message as a welcome note in the chat.\
+\n\n  •  Available variables for formatting welcome messages :\
 \n`{mention}, {title}, {count}, {first}, {last}, {fullname}, {userid}, {username}, {my_first}, {my_fullname}, {my_last}, {my_mention}, {my_username}`\
-\n\n**Syntax :** `.listpwel`\
-\n**Usage :** Check whether you have a welcome note in the chat.\
-\n\n**Syntax :** `.clearpwel`\
-\n**Usage :** Deletes the welcome note for the current chat.\
+\n\n  •  **Syntax :** `.listpwel`\
+\n  •  **Function :** Check whether you have a welcome note in the chat.\
+\n\n  •  **Syntax :** `.clearpwel`\
+\n  •  **Function :** Deletes the welcome note for the current chat.\
 "
     }
 )
