@@ -249,10 +249,10 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
     with open(file_name, "w+") as output:
         output.write(text)
     if reply_to:
-        await reply_to.reply(file=file_name,caption = caption)
+        await reply_to.reply(caption,file=file_name)
         return os.remove(file_name)
     if event.sender_id in Config.SUDO_USERS:
-        await event.reply(file=file_name,caption = caption)
+        await event.reply( caption,file=file_name)
         return os.remove(file_name)
     await event.client.send_file(event.chat_id , file_name,caption = caption)
     os.remove(file_name)
