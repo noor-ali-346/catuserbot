@@ -14,8 +14,6 @@ async def _(event):
         return
     # Space weirdness in regex required because argument is optional and other
     # commands start with ".lock"
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group("target")
     peer_id = event.chat_id
     if input_str in (("bots", "commands", "email", "forward", "url")):
@@ -309,8 +307,6 @@ async def check_incoming_messages(event):
 
 @bot.on(events.ChatAction())  # pylint:disable=E0602
 async def _(event):
-    if event.fwd_from:
-        return
     # TODO: exempt admins from locks
     # check for "lock" "bots"
     if not is_locked(event.chat_id, "bots"):
@@ -350,14 +346,14 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "locks": "**Plugin : **`lock`\
-        \n\n**Syntax : **`.lock <all (or) type(s)> or .unlock <all (or) type(s)>`\
-\n**Function : **__Allows you to lock/unlock some common message types in the chat.\
-\n[NOTE: Requires proper admin rights in the chat !!]__\
-\n\n**Available message types to lock/unlock are: \
-\nAPI Options : **msg, media, sticker, gif, gamee, ainline, gpoll, adduser, cpin, changeinfo\
-\n**DB Options : **bots, commands, email, forward, url\
-\n\n**Syntax : **`.locks`\
-\n**Function : **__To see the active locks__"
+        "locks": "**Plugin : **`locks`\
+        \n\n**  •  Syntax : **`.lock <all (or) type(s)> or .unlock <all (or) type(s)>`\
+        \n  •  **Function : **__Allows you to lock/unlock some common message types in the chat.\
+        \n  •  [NOTE: Requires proper admin rights in the chat !!]__\
+        \n\n  •  **Available message types to lock/unlock are: \
+        \n  •  API Options : **msg, media, sticker, gif, gamee, ainline, gpoll, adduser, cpin, changeinfo\
+        \n**  •  DB Options : **bots, commands, email, forward, url\
+        \n\n  •  **Syntax : **`.locks`\
+        \n  •  **Function : **__To see the active locks__"
     }
 )
