@@ -232,9 +232,10 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
     asciich = ["*","`","_"]
     for i in asciich:
         text =  re.sub(rf"\{i}", "", text)
+    text =  re.sub(r"•", ">>", text)
     if aslink:
         linktext= linktext or "Message was to big so pasted to nekobin"
-        kresult = requests.post("https://del.dog/documents", data=text).json()
+        kresult = requests.post("https://del.dog/documents", data=text.encode("UTF-8")).json()
         text = linktext + f" [here](https://del.dog/{kresult['key']})"
         if event.sender_id in Config.SUDO_USERS:
             if reply_to:
