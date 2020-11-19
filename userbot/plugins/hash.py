@@ -51,12 +51,14 @@ async def endecrypt(event):
     catevent = event
     if event.pattern_match.group(1) == "en":
         if string:
-            base64.b64encode(bytes(string, "utf-8")).decode("utf-8")
+            result = base64.b64encode(bytes(string, "utf-8")).decode("utf-8")
         else:
             reply = await event.get_reply_message()
+            if not reply:
+                return await event.delete(event , "`What should i encode`")
             mediatype = media_type(reply)
             if mediatype is not None:
-                base64.b64encode(bytes(reply.text, "utf-8")).decode("utf-8")
+                result = base64.b64encode(bytes(reply.text, "utf-8")).decode("utf-8")
             else:
                 catevent = await edit_or_reply(event , "`Encoding ...`")
                 c_time = time.time()
@@ -68,8 +70,8 @@ async def endecrypt(event):
                     ),
                 )
                 with open(reply, "rb") as image_file:
-                    base64.b64encode(image_file.read()).decode("utf-8")  
-        await edit_or_reply(catevent, "**Shhh! It's Encoded : **\n`{result}`",file_name="encodedfile.txt",caption = "It's Encoded")
+                    result = base64.b64encode(image_file.read()).decode("utf-8")  
+        await edit_or_reply(catevent, f"**Shhh! It's Encoded : **\n`{result}`",file_name="encodedfile.txt",caption = "It's Encoded")
     else:
         lething = str(
             base64.b64decode(
