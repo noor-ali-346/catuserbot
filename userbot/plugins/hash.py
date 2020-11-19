@@ -8,7 +8,7 @@
 from subprocess import PIPE
 from subprocess import run as runapp
 
-import pybase64
+import base64
 
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply, errors_handler, sudo_cmd
@@ -64,13 +64,13 @@ async def gethash(hash_q):
 async def endecrypt(query):
     """ For .base64 command, find the base64 encoding of the given string. """
     if query.pattern_match.group(1) == "en":
-        lething = str(pybase64.b64encode(bytes(query.pattern_match.group(2), "utf-8")))[
+        lething = str(base64.b64encode(bytes(query.pattern_match.group(2), "utf-8")))[
             2:
         ]
         await edit_or_reply(query, "Shhh! It's Encoded: `" + lething[:-1] + "`")
     else:
         lething = str(
-            pybase64.b64decode(
+            base64.b64decode(
                 bytes(query.pattern_match.group(2), "utf-8"), validate=True
             )
         )[2:]

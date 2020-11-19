@@ -7,7 +7,7 @@ dont edit credits
 import asyncio
 from datetime import datetime
 
-import pybase64
+import base64
 from telethon.errors import BadRequestError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
@@ -62,7 +62,7 @@ async def catgban(cat):
         await cate.edit("why would I ban my dev")
         return
     try:
-        hmm = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+        hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
         await cat.client(ImportChatInviteRequest(hmm))
     except BaseException:
         pass

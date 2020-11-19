@@ -18,7 +18,7 @@ import shutil
 import time
 from datetime import datetime
 
-import pybase64
+import base64
 from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
 from telethon.errors import FloodWaitError
@@ -73,7 +73,7 @@ async def main(event):
     await event.edit("Starting Digital Profile Pic, see magic in 5 sec.")
     poto = "userbot/poto_pfp.png"
     cat = str(
-        pybase64.b64decode(
+        base64.b64decode(
             "aHR0cHM6Ly90ZWxlZ3JhLnBoL2ZpbGUvYWVhZWJlMzNiMWYzOTg4YTBiNjkwLmpwZw=="
         )
     )[2:51]
@@ -88,7 +88,7 @@ async def main(event):
         img = Image.open(poto)
         drawn_text = ImageDraw.Draw(img)
         cat = str(
-            pybase64.b64decode("dXNlcmJvdC9oZWxwZXJzL3N0eWxlcy9kaWdpdGFsLnR0Zg==")
+            base64.b64decode("dXNlcmJvdC9oZWxwZXJzL3N0eWxlcy9kaWdpdGFsLnR0Zg==")
         )[2:36]
         fnt = ImageFont.truetype(cat, 200)
         drawn_text.text((350, 100), current_time, font=fnt, fill=(124, 252, 0))

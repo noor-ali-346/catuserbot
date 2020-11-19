@@ -5,7 +5,7 @@ import asyncio
 import os
 import re
 
-import pybase64
+import base64
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
@@ -53,7 +53,7 @@ async def nekobot(cat):
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
     reply_to_id = await reply_id(cat)
-    hmm = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     reply = await cat.get_reply_message()
     if not text:
         if cat.is_reply and not reply.media:
@@ -84,7 +84,7 @@ async def nekobot(cat):
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
     reply_to_id = await reply_id(cat)
-    hmm = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     reply = await cat.get_reply_message()
     if not text:
         if cat.is_reply and not reply.media:
@@ -115,7 +115,7 @@ async def nekobot(cat):
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
     reply_to_id = await reply_id(cat)
-    hmm = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     reply = await cat.get_reply_message()
     if not text:
         if cat.is_reply and not reply.media:
@@ -146,7 +146,7 @@ async def nekobot(cat):
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
     reply_to_id = await reply_id(cat)
-    hmm = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     reply = await cat.get_reply_message()
     if not text:
         if cat.is_reply and not reply.media:
@@ -177,7 +177,7 @@ async def nekobot(cat):
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
     reply_to_id = await reply_id(cat)
-    hmm = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     reply = await cat.get_reply_message()
     if not text:
         if cat.is_reply and not reply.media:

