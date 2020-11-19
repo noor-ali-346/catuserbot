@@ -2,7 +2,6 @@ import asyncio
 import datetime
 import importlib
 import inspect
-import io
 import logging
 import math
 import os
