@@ -229,7 +229,7 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
                 )
             return await event.reply(text, parse_mode=parse_mode, link_preview=link_preview)
         return await event.edit(text, parse_mode=parse_mode, link_preview=link_preview)
-    asciich = ["*","`","_",""]
+    asciich = ["*","`","_"]
     for i in asciich:
         text =  re.sub(rf"\{i}", "", text)
     if aslink:
@@ -247,10 +247,13 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
     with open(file_name, "w+") as output:
             output.write(result)
     if reply_to:
-        return await reply_to.reply(file=out_file)
+        await reply_to.reply(file=out_file)
+        return os.remove(out_file)
     if event.sender_id in Config.SUDO_USERS:
-        return await event.reply(file=out_file)
-    return await event.client.send_file(event.chat_id , out_file)
+        await event.reply(file=out_file)
+        return os.remove(out_file)
+    await event.client.send_file(event.chat_id , out_file)
+    os.remove(out_file)
 
 
 
