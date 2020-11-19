@@ -60,7 +60,7 @@ async def ff_mpeg_trim_cmd(event):
         )
         return
     reply_to_id = await reply_id(event)
-    catevent = await edit_or_reply(event,"`Triming the media`")
+    catevent = await edit_or_reply(event,"`Triming the media......`")
     current_message_text = event.raw_text
     cmt = current_message_text.split(" ")
     start = datetime.now()
@@ -137,11 +137,11 @@ async def ff_mpeg_trim_cmd(event):
         )
         return
     reply_to_id = await reply_id(event)
-    catevent = await edit_or_reply(event,"`Triming the media`")
+    catevent = await edit_or_reply(event,"`Triming the media...........`")
     current_message_text = event.raw_text
     cmt = current_message_text.split(" ")
     start = datetime.now()
-    out_put_file_name = os.path.join(output_directory , f"{str(round(time.time()))}.mp3")
+    out_put_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY , f"{str(round(time.time()))}.mp3")
     if len(cmt) == 3:
         # output should be audio
         cmd, start_time, end_time = cmt
