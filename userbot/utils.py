@@ -232,8 +232,8 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
     asciich = ["*","`","_"]
     for i in asciich:
         text =  re.sub(rf"\{i}", "", text)
-    text =  re.sub(r"•", ">>", text)
     if aslink:
+        text =  re.sub(r"•", ">>", text)
         linktext= linktext or "Message was to big so pasted to nekobin"
         kresult = requests.post("https://del.dog/documents", data=text.encode("UTF-8")).json()
         text = linktext + f" [here](https://del.dog/{kresult['key']})"
@@ -247,7 +247,7 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
     file_name = file_name or "output.txt"
     caption = caption or None
     with open(file_name, "w+") as output:
-        output.write(result)
+        output.write(text)
     if reply_to:
         await reply_to.reply(file=out_file,caption = caption)
         return os.remove(out_file)
