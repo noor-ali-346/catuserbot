@@ -147,9 +147,9 @@ async def ff_mpeg_trim_cmd(event):
         o = await cult_small_video(
             FF_MPEG_DOWN_LOAD_MEDIA_PATH,
             Config.TMP_DOWNLOAD_DIRECTORY,
-            out_put_file_name,
             start_time,
             end_time,
+            out_put_file_name,
         )
         if o is None:
             return await edit_delete(catevent,f"**Error : **`Can't complete the process`")
@@ -219,7 +219,7 @@ async def take_screen_shot(video_file, output_directory, ttl):
 # https://github.com/Nekmo/telegram-upload/blob/master/telegram_upload/video.py#L26
 
 
-async def cult_small_video(video_file, output_directory,out_put_file_name=None, start_time, end_time):
+async def cult_small_video(video_file, output_directory, start_time, end_time,out_put_file_name=None):
     # https://stackoverflow.com/a/13891070/4723940
     out_put_file_name = out_put_file_name or os.path.join(output_directory , f"{str(round(time.time()))}.mp4")
     file_genertor_command = [
