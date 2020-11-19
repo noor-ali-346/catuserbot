@@ -64,7 +64,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 @bot.on(sudo_cmd(pattern="setgpic$", allow_sudo=True))
 @errors_handler
 async def set_group_photo(gpic):
-    if event.fwd_from:
+    if gpic.fwd_from:
         return
     if not gpic.is_group:
         await edit_or_reply(gpic, "`I don't think this is a group.`")
@@ -111,7 +111,7 @@ async def set_group_photo(gpic):
 @bot.on(sudo_cmd(pattern="promote(?: |$)(.*)", command="promote", allow_sudo=True))
 @errors_handler
 async def promote(promt):
-    if event.fwd_from:
+    if promt.fwd_from:
         return
     chat = await promt.get_chat()
     admin = chat.admin_rights
@@ -152,7 +152,7 @@ async def promote(promt):
 @bot.on(sudo_cmd(pattern="demote(?: |$)(.*)", command="demote", allow_sudo=True))
 @errors_handler
 async def demote(dmod):
-    if event.fwd_from:
+    if dmod.fwd_from:
         return
     chat = await dmod.get_chat()
     admin = chat.admin_rights
@@ -193,7 +193,7 @@ async def demote(dmod):
 @bot.on(sudo_cmd(pattern="ban(?: |$)(.*)", command="ban", allow_sudo=True))
 @errors_handler
 async def ban(bon):
-    if event.fwd_from:
+    if bon.fwd_from:
         return
     chat = await bon.get_chat()
     admin = chat.admin_rights
@@ -236,7 +236,7 @@ async def ban(bon):
 @bot.on(sudo_cmd(pattern="unban(?: |$)(.*)", command="unban", allow_sudo=True))
 @errors_handler
 async def nothanos(unbon):
-    if event.fwd_from:
+    if unbon.fwd_from:
         return
     chat = await unbon.get_chat()
     admin = chat.admin_rights
@@ -440,7 +440,7 @@ async def endmute(event):
 @bot.on(sudo_cmd(pattern="pin($| (.*))", command="pin", allow_sudo=True))
 @errors_handler
 async def pin(msg):
-    if event.fwd_from:
+    if msg.fwd_from:
         return
     if not msg.is_private:
         chat = await msg.get_chat()
@@ -480,7 +480,7 @@ async def pin(msg):
 @bot.on(sudo_cmd(pattern="unpin($| (.*))", command="unpin", allow_sudo=True))
 @errors_handler
 async def pin(msg):
-    if event.fwd_from:
+    if msg.fwd_from:
         return
     if not msg.is_private:
         chat = await msg.get_chat()
@@ -530,7 +530,7 @@ async def pin(msg):
 @bot.on(sudo_cmd(pattern="kick(?: |$)(.*)", command="kick", allow_sudo=True))
 @errors_handler
 async def kick(usr):
-    if event.fwd_from:
+    if usr.fwd_from:
         return
     chat = await usr.get_chat()
     admin = chat.admin_rights
