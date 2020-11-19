@@ -39,6 +39,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"bombs$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"bombs$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     event = await edit_or_reply(event, "bombs")
     await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
@@ -135,16 +137,18 @@ async def _(event):
         "What The",
         "What The F",
         "What The F Brah",
-        "What The F Brah\nhttps://telegra.ph//file/f3b760e4a99340d331f9b.jpg",
+        "What The F Brah\nhttps:/telegra.ph//file/f3b760e4a99340d331f9b.jpg",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 5])
+        await event.edit(animation_chars[i % 5],link_preview=True)
 
 
 @bot.on(admin_cmd(pattern="ding$"))
 @bot.on(sudo_cmd(pattern="ding$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     animation_interval = 0.3
     animation_ttl = range(30)
     animation_chars = [
@@ -198,6 +202,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"candy$"))
 @bot.on(sudo_cmd(pattern=r"candy$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     event = await edit_or_reply(event, "candy")
     deq = deque(list("🍦🍧🍩🍪🎂🍰🧁🍫🍬🍭"))
     for _ in range(999):
@@ -209,6 +215,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="gangasta$"))
 @bot.on(sudo_cmd(pattern="gangasta$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     event = await edit_or_reply(event, "gangasta")
     await event.edit("EVERyBOdy")
     await asyncio.sleep(0.3)
@@ -230,6 +238,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"charging$"))
 @bot.on(sudo_cmd(pattern=f"charging$", allow_sudo=True))
 async def timer_blankx(e):
+    if event.fwd_from:
+        return
     e = await edit_or_reply(e, "charging")
     txt = (
         e.text[10:]
