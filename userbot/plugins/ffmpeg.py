@@ -17,11 +17,11 @@ async def ff_mpeg_trim_cmd(event):
     if event.fwd_from:
         return
     if not os.path.exists(FF_MPEG_DOWN_LOAD_MEDIA_PATH):
-        if event.reply_to_msg_id:
+        reply_message = await event.get_reply_message()
+        if reply_message:
             start = datetime.now()
-            reply_message = await event.get_reply_message()
             media = media_type(reply_message)
-            if media != "Video" or media != "Audio" or media != "Voice" or media != "Round Video":
+            if media not in ["Video", "Audio" , "Voice", "Round Video"]:
                 return await edit_delete(event , "`Only media files are supported`", 5)
             catevent = await edit_or_reply(event,"`Saving the file...`")
             try:
@@ -178,8 +178,8 @@ async def ff_mpeg_trim_cmd(event):
     ms = (end - start).seconds
     await edit_delete(catevent , f"`Completed Process in {ms} seconds`",3)
 
-@bot.on(admin_cmd(pattern="ffmpegsave$"))
-@bot.on(sudo_cmd(pattern="ffmpegsave$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="ffmpegclear$"))
+@bot.on(sudo_cmd(pattern="ffmpegclear$", allow_sudo=True))
 async def ff_mpeg_trim_cmd(event):
     if event.fwd_from:
         return
