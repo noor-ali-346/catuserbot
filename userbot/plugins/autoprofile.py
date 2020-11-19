@@ -12,13 +12,13 @@ Hmmmm U need to config DOWNLOAD_PFP_URL_CLOCK var in Heroku with any telegraph i
 USING THIS PLUGIN CAN RESULT IN ACCOUNT BAN. WE DONT CARE ABOUT BAN, SO WE ARR USING THIS.
 """
 import asyncio
+import base64
 import os
 import random
 import shutil
 import time
 from datetime import datetime
 
-import base64
 from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
 from telethon.errors import FloodWaitError

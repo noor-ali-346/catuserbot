@@ -2,9 +2,9 @@
 
 #    Copyright (C) 2020  sandeep.n(π.$)
 
+import base64
 import os
 
-import base64
 from telegraph import exceptions, upload_file
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError

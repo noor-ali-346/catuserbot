@@ -5,8 +5,8 @@ Idea by @BlazingRobonix
 """
 
 import asyncio
-
 import base64
+
 import requests
 from telethon import events
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get

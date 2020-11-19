@@ -1,7 +1,7 @@
 import asyncio
+import base64
 import os
 
-import base64
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 

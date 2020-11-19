@@ -5,10 +5,9 @@
 
 """ Userbot module containing hash and encode/decode commands. """
 
+import base64
 from subprocess import PIPE
 from subprocess import run as runapp
-
-import base64
 
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply, errors_handler, sudo_cmd
