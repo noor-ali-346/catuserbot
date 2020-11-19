@@ -16,6 +16,8 @@ from . import (CMD_HELP, changemymind, deEmojify, fakegs, kannagen, moditweet,
 @bot.on(admin_cmd(outgoing=True, pattern="fakegs(?: |$)(.*)", command="fakegs"))
 @bot.on(sudo_cmd(allow_sudo=True, pattern="fakegs(?: |$)(.*)", command="fakegs"))
 async def nekobot(cat):
+    if cat.fwd_from:
+        return
     text = cat.pattern_match.group(1)
     reply_to_id = await reply_id(cat)
     if not text:
@@ -46,6 +48,8 @@ async def nekobot(cat):
 @bot.on(admin_cmd(outgoing=True, pattern="trump(?: |$)(.*)", command="trump"))
 @bot.on(sudo_cmd(allow_sudo=True, pattern="trump(?: |$)(.*)", command="trump"))
 async def nekobot(cat):
+    if cat.fwd_from:
+        return
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
     reply_to_id = await reply_id(cat)
@@ -75,6 +79,8 @@ async def nekobot(cat):
 @bot.on(admin_cmd(outgoing=True, pattern="modi(?: |$)(.*)", command="modi"))
 @bot.on(sudo_cmd(allow_sudo=True, pattern="modi(?: |$)(.*)", command="modi"))
 async def nekobot(cat):
+    if cat.fwd_from:
+        return
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
     reply_to_id = await reply_id(cat)
@@ -104,6 +110,8 @@ async def nekobot(cat):
 @bot.on(admin_cmd(outgoing=True, pattern="cmm(?: |$)(.*)", command="cmm"))
 @bot.on(sudo_cmd(allow_sudo=True, pattern="cmm(?: |$)(.*)", command="cmm"))
 async def nekobot(cat):
+    if cat.fwd_from:
+        return
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
     reply_to_id = await reply_id(cat)
@@ -133,6 +141,8 @@ async def nekobot(cat):
 @bot.on(admin_cmd(outgoing=True, pattern="kanna(?: |$)(.*)", command="kanna"))
 @bot.on(sudo_cmd(allow_sudo=True, pattern="kanna(?: |$)(.*)", command="kanna"))
 async def nekobot(cat):
+    if cat.fwd_from:
+        return
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
     reply_to_id = await reply_id(cat)
@@ -162,6 +172,8 @@ async def nekobot(cat):
 @bot.on(admin_cmd(outgoing=True, pattern="tweet(?: |$)(.*)", command="tweet"))
 @bot.on(sudo_cmd(allow_sudo=True, pattern="tweet(?: |$)(.*)", command="tweet"))
 async def nekobot(cat):
+    if cat.fwd_from:
+        return
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
     reply_to_id = await reply_id(cat)

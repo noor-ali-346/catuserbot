@@ -14,6 +14,8 @@ from . import CMD_HELP, make_gif, runcmd
 @bot.on(admin_cmd(pattern="collage(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="collage(?: |$)(.*)", allow_sudo=True))
 async def collage(cat):
+    if cat.fwd_from:
+        return
     catinput = cat.pattern_match.group(1)
     reply = await cat.get_reply_message()
     catid = cat.reply_to_msg_id

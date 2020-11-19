@@ -81,6 +81,8 @@ if Config.THUMB_IMAGE != None:
 
 
 def check(cat):
+    if cat.fwd_from:
+        return
     if "/start" in cat:
         return True
     try:

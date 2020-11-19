@@ -48,6 +48,8 @@ UNBAN_RIGHTS = ChatBannedRights(
 @bot.on(admin_cmd(pattern=r"gban(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern=r"gban(?: |$)(.*)", allow_sudo=True))
 async def catgban(cat):
+    if cat.fwd_from:
+        return
     cate = await edit_or_reply(cat, "gbanning.......")
     start = datetime.now()
     user, reason = await get_user_from_event(cat)
@@ -120,6 +122,8 @@ async def catgban(cat):
 @bot.on(admin_cmd(pattern=r"ungban(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern=r"ungban(?: |$)(.*)", allow_sudo=True))
 async def catgban(cat):
+    if cat.fwd_from:
+        return
     cate = await edit_or_reply(cat, "ungbaning.....")
     start = datetime.now()
     user, reason = await get_user_from_event(cat)
