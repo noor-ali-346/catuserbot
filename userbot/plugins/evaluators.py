@@ -16,6 +16,8 @@ async def _(event):
     if event.fwd_from:
         return
     cmd = "".join(event.text.split(maxsplit=1)[1:])
+    if not cmd:
+        return await edit_delete(event,"`What should i execute?..`")
     catevent = await edit_or_reply(event, "`Executing.....`")
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
@@ -46,6 +48,8 @@ async def _(event):
     if event.fwd_from:
         return
     cmd = "".join(event.text.split(maxsplit=1)[1:])
+    if not cmd:
+        return await edit_delete(event,"`What should i run ?..`")
     catevent = await edit_or_reply(event, "`Running ...`")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
