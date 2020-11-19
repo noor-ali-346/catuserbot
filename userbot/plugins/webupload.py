@@ -89,6 +89,8 @@ async def labstack(event):
     )
 )
 async def _(event):
+    if event.fwd_from:
+        return
     editor = await edit_or_reply(event, "processing ...")
     input_str = event.pattern_match.group(1)
     selected_transfer = event.pattern_match.group(2)

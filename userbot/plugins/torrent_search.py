@@ -106,6 +106,8 @@ async def tor_search(event):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     start = datetime.now()
     await event.edit("Processing ...")
     input_type = event.pattern_match.group(1)

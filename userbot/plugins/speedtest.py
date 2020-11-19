@@ -14,6 +14,8 @@ from . import CMD_HELP, reply_id
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     input_str = event.pattern_match.group(1)
     as_text = False
     as_document = False

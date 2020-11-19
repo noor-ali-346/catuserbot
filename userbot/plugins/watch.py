@@ -82,6 +82,8 @@ def get_provider(url):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     query = event.pattern_match.group(1)
     et = await edit_or_reply(event, "Finding Sites...")
     try:

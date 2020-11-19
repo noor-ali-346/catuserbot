@@ -26,6 +26,8 @@ def weird_division(n, d):
 @borg.on(admin_cmd(pattern="chatfs ?(.*)", outgoing=True))
 @borg.on(sudo_cmd(pattern="chatfs ?(.*)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     entity = event.chat_id
     input_str = event.pattern_match.group(1)
     if input_str:
@@ -115,6 +117,8 @@ async def _(event):
 @borg.on(admin_cmd(pattern="userfs ?(.*)", outgoing=True))
 @borg.on(sudo_cmd(pattern="userfs ?(.*)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     reply = await event.get_reply_message()
     input_str = event.pattern_match.group(1)
     if reply and input_str:

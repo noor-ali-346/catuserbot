@@ -33,6 +33,8 @@ USERNAME_TAKEN = "```This username is already taken.```"
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     bio = event.pattern_match.group(1)
     try:
         await event.client(
@@ -45,6 +47,8 @@ async def _(event):
 
 @bot.on(admin_cmd(pattern="pname ((.|\n)*)"))  # pylint:disable=E0602,W0703
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     names = event.pattern_match.group(1)
@@ -65,6 +69,8 @@ async def _(event):
 
 @bot.on(admin_cmd(pattern="ppic"))  # pylint:disable=E0602
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     reply_message = await event.get_reply_message()
@@ -184,6 +190,8 @@ async def remove_profilepic(delpfp):
 
 @bot.on(admin_cmd(pattern="myusernames$"))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     result = await bot(GetAdminedPublicChannelsRequest())

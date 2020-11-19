@@ -19,6 +19,8 @@ from . import deEmojify
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     input_str = event.pattern_match.group(1)
     start = datetime.now()
     if event.reply_to_msg_id:

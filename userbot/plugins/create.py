@@ -12,6 +12,8 @@ from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     type_of_group = event.pattern_match.group(1)
     group_name = event.pattern_match.group(2)
     event = await edit_or_reply(event, "creating......")

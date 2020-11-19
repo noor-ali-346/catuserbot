@@ -10,6 +10,8 @@ from . import CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     reply = await event.get_reply_message()
     if not input_str and reply:
@@ -37,6 +39,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="url( (.*)|$)"))
 @bot.on(sudo_cmd(pattern="url( (.*)|$)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     input_str = "".join(event.text.split(maxsplit=1)[1:])
@@ -68,6 +72,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="unshort( (.*)|$)"))
 @bot.on(sudo_cmd(pattern="unshort( (.*)|$)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     input_str = "".join(event.text.split(maxsplit=1)[1:])
@@ -104,6 +110,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="hl( (.*)|$)"))
 @bot.on(sudo_cmd(pattern="hl( (.*)|$)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     input_str = "".join(event.text.split(maxsplit=1)[1:])

@@ -148,6 +148,8 @@ async def autopic(event):
 
 @bot.on(admin_cmd(pattern="autoname$"))  # pylint:disable=E0602
 async def _(event):
+    if event.fwd_from:
+        return
     await event.edit(f"Auto Name has been started by my Master ")
     while True:
         DM = time.strftime("%d-%m-%y")
@@ -168,6 +170,8 @@ async def _(event):
 
 @bot.on(admin_cmd(pattern="autobio$"))  # pylint:disable=E0602
 async def _(event):
+    if event.fwd_from:
+        return
     await event.edit(f"Auto bio has been started by my Master")
     while True:
         DMY = time.strftime("%d.%m.%Y")
@@ -248,6 +252,8 @@ BIO_STRINGS = [
 
 @bot.on(admin_cmd(pattern="monkeybio$"))  # pylint:disable=E0602
 async def _(event):
+    if event.fwd_from:
+        return
     await event.edit(f"Monkey has been started by my Master")
     while True:
         bro = random.randint(0, len(BIO_STRINGS) - 1)

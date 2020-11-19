@@ -12,6 +12,8 @@ from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 
 @bot.on(events.ChatAction)
 async def _(event):
+    if event.fwd_from:
+        return
     cws = get_current_welcome_settings(event.chat_id)
     if (
         cws
@@ -26,7 +28,7 @@ async def _(event):
         a_user = await event.get_user()
         chat = await event.get_chat()
         me = await bot.get_me()
-        title = chat.title if chat.title else "this chat"
+        title = chat.title or "this chat"
         participants = await bot.get_participants(chat)
         count = len(participants)
         mention = "<a href='tg://user?id={}'>{}</a>".format(

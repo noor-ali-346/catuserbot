@@ -18,6 +18,8 @@ thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     catevent = await edit_or_reply(event, "Processing ...")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
@@ -48,6 +50,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     if os.path.exists(thumb_image_path):
         os.remove(thumb_image_path)
     else:
@@ -58,6 +62,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="getthumb$"))
 @bot.on(sudo_cmd(pattern="getthumb$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     if event.reply_to_msg_id:

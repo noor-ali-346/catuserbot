@@ -53,6 +53,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="men (.*)"))
 @bot.on(sudo_cmd(pattern="men (.*)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     input_str = event.pattern_match.group(1)
     reply_to_id = await reply_id(event)
     if event.reply_to_msg_id:

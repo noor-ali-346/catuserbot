@@ -67,6 +67,8 @@ async def pipcheck(pip):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     cmd = "rm -rf *"
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
@@ -80,6 +82,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="plugins$"))
 @bot.on(sudo_cmd(pattern="plugins$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     cmd = "ls userbot/plugins"
@@ -111,6 +115,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="date$"))
 @bot.on(sudo_cmd(pattern="date$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     #    dirname = event.pattern_match.group(1)
@@ -145,6 +151,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="env$"))
 @bot.on(sudo_cmd(pattern="env$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     #    dirname = event.pattern_match.group(1)
@@ -182,6 +190,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="fast$"))
 @bot.on(sudo_cmd(pattern="fast$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     await event.edit("calculating...")
     if event.fwd_from:
         return
@@ -219,6 +229,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     cmd = "pytuneteller pisces --today"
     eply_to_id = event.message.id
     if event.reply_to_msg_id:
@@ -248,6 +260,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="qquote$"))
 @bot.on(sudo_cmd(pattern="qquote$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     cmd = "jotquote"
@@ -281,6 +295,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     cmd = "csvfaker -r 10 first_name last_name job"
     eply_to_id = event.message.id
     if event.reply_to_msg_id:
@@ -312,6 +328,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     cmd = "kwot"
     eply_to_id = event.message.id
     if event.reply_to_msg_id:
@@ -341,6 +359,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="qpro$"))
 @bot.on(sudo_cmd(pattern="qpro$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     cmd = "programmingquotes -l EN"

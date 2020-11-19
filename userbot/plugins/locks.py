@@ -10,6 +10,8 @@ from .sql_helper.locks_sql import get_locks, is_locked, update_lock
 @bot.on(admin_cmd(pattern=r"lock( (?P<target>\S+)|$)"))
 @bot.on(sudo_cmd(pattern=r"lock( (?P<target>\S+)|$)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     # Space weirdness in regex required because argument is optional and other
     # commands start with ".lock"
     if event.fwd_from:
@@ -113,6 +115,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     input_str = event.pattern_match.group(1)
     peer_id = event.chat_id
     if input_str in (("bots", "commands", "email", "forward", "url")):
@@ -212,6 +216,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     res = ""
     current_db_locks = get_locks(event.chat_id)
     if not current_db_locks:
@@ -307,6 +313,8 @@ async def check_incoming_messages(event):
 
 @bot.on(events.ChatAction())  # pylint:disable=E0602
 async def _(event):
+    if event.fwd_from:
+        return
     # TODO: exempt admins from locks
     # check for "lock" "bots"
     if not is_locked(event.chat_id, "bots"):

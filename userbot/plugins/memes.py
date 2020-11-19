@@ -70,6 +70,8 @@ async def univsaye(cowmsg):
 @bot.on(admin_cmd(pattern="coin ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="coin ?(.*)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     r = random.randint(1, 100)
     input_str = event.pattern_match.group(1)
     if input_str:
@@ -353,6 +355,8 @@ async def bluetext(e):
 @bot.on(admin_cmd(pattern="session$"))
 @bot.on(sudo_cmd(pattern="session$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     mentions = "**telethon.errors.rpcerrorlist.AuthKeyDuplicatedError: The authorization key (session file) was used under two different IP addresses simultaneously, and can no longer be used. Use the same session exclusively, or use different sessions (caused by GetMessagesRequest)**"
     await event.edit(mentions)
 
@@ -360,6 +364,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="lfy ?(.*)"))
 @bot.on(sudo_cmd(pattern="lfy ?(.*)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)

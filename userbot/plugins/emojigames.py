@@ -159,6 +159,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     reply_message = event
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
@@ -193,7 +195,7 @@ CMD_HELP.update(
     \n**Usage : **each number shows different animation for basket ball\
     \n\n**Syntax : **`.⚽️ [1-5] `or `.fb [1-5]`\
     \n**Usage : **each number shows different animation for football\
-    \n\n**Syntax : **`.🎰 [1-64] `or `.fb [1-64]`\
+    \n\n**Syntax : **`.🎰 [1-64] `or `.jp [1-64]`\
     \n**Usage : **each number shows different animation for slot machine(jackpot)\
     "
     }

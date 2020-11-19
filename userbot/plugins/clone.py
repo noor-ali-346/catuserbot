@@ -29,6 +29,8 @@ else:
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     reply_message = await event.get_reply_message()
     replied_user, error_i_a = await get_full_user(event)
     if replied_user is None:
@@ -77,6 +79,8 @@ async def _(event):
 
 @bot.on(admin_cmd(pattern="revert$"))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     name = f"{DEFAULTUSER}"

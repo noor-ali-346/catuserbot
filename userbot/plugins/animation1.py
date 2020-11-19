@@ -12,6 +12,8 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     animation_interval = 1
     animation_ttl = range(14)
     event = await edit_or_reply(event, "brain")
@@ -41,6 +43,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     event = await edit_or_reply(event, "bombs")
     await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
@@ -67,6 +71,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"call$"))
 @bot.on(sudo_cmd(pattern=r"call$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     animation_interval = 3
@@ -102,6 +108,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     animation_interval = 0.7
     animation_ttl = range(12)
     event = await edit_or_reply(event, "ready to die dude.....")
@@ -129,6 +137,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     animation_interval = 0.8
     animation_ttl = range(5)
     event = await edit_or_reply(event, "wtf")
@@ -147,6 +157,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="ding$"))
 @bot.on(sudo_cmd(pattern="ding$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     animation_interval = 0.3
@@ -172,6 +184,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"hypno$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"hypno$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     animation_interval = 0.3
@@ -204,6 +218,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     event = await edit_or_reply(event, "candy")
     deq = deque(list("🍦🍧🍩🍪🎂🍰🧁🍫🍬🍭"))
     for _ in range(999):
@@ -215,6 +231,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="gangasta$"))
 @bot.on(sudo_cmd(pattern="gangasta$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "gangasta")

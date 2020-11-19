@@ -48,6 +48,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="resend$"))
 @bot.on(sudo_cmd(pattern="resend$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     try:
         await event.delete()
     except:
@@ -61,6 +63,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"fpost (.*)"))
 @bot.on(sudo_cmd(pattern=r"fpost (.*)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     global groupsid
     global msg_cache
     await event.delete()

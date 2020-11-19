@@ -39,6 +39,8 @@ from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     if not event.reply_to_msg_id:
         event = await edit_or_reply(event, "Reply to any user message.")
         return

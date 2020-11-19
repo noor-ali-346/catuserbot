@@ -17,6 +17,8 @@ BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>
 @bot.on(admin_cmd(pattern=r"cbutton(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"cbutton(?: |$)(.*)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     chat = event.chat_id
     reply_message = await event.get_reply_message()
     if reply_message:
@@ -70,6 +72,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"ibutton( (.*)|$)", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"ibutton( (.*)|$)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     reply_to_id = None
     catinput = "".join(event.text.split(maxsplit=1)[1:])
     if event.reply_to_msg_id:

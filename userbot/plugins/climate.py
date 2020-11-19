@@ -192,6 +192,8 @@ async def set_default_city(city):
 @bot.on(admin_cmd(pattern="wttr ?(.*)"))
 @bot.on(sudo_cmd(pattern="wttr ?(.*)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     global DEFCITY
     reply_to_id = None
     if event.reply_to_msg_id:

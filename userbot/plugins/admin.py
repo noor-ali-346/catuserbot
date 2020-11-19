@@ -64,6 +64,8 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 @bot.on(sudo_cmd(pattern="setgpic$", allow_sudo=True))
 @errors_handler
 async def set_group_photo(gpic):
+    if event.fwd_from:
+        return
     if not gpic.is_group:
         await edit_or_reply(gpic, "`I don't think this is a group.`")
         return
@@ -109,6 +111,8 @@ async def set_group_photo(gpic):
 @bot.on(sudo_cmd(pattern="promote(?: |$)(.*)", command="promote", allow_sudo=True))
 @errors_handler
 async def promote(promt):
+    if event.fwd_from:
+        return
     chat = await promt.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -148,6 +152,8 @@ async def promote(promt):
 @bot.on(sudo_cmd(pattern="demote(?: |$)(.*)", command="demote", allow_sudo=True))
 @errors_handler
 async def demote(dmod):
+    if event.fwd_from:
+        return
     chat = await dmod.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -187,6 +193,8 @@ async def demote(dmod):
 @bot.on(sudo_cmd(pattern="ban(?: |$)(.*)", command="ban", allow_sudo=True))
 @errors_handler
 async def ban(bon):
+    if event.fwd_from:
+        return
     chat = await bon.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -228,6 +236,8 @@ async def ban(bon):
 @bot.on(sudo_cmd(pattern="unban(?: |$)(.*)", command="unban", allow_sudo=True))
 @errors_handler
 async def nothanos(unbon):
+    if event.fwd_from:
+        return
     chat = await unbon.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -265,6 +275,8 @@ async def watcher(event):
 @bot.on(admin_cmd(pattern="mute(?: |$)(.*)", command="mute"))
 @bot.on(sudo_cmd(pattern="mute(?: |$)(.*)", command="mute", allow_sudo=True))
 async def startmute(event):
+    if event.fwd_from:
+        return
     if event.is_private:
         await event.edit("Unexpected issues or ugly errors may occur!")
         await sleep(3)
@@ -361,6 +373,8 @@ async def startmute(event):
 @bot.on(admin_cmd(pattern="unmute(?: |$)(.*)", command="unmute"))
 @bot.on(sudo_cmd(pattern="unmute(?: |$)(.*)", command="unmute", allow_sudo=True))
 async def endmute(event):
+    if event.fwd_from:
+        return
     if event.is_private:
         await event.edit("Unexpected issues or ugly errors may occur!")
         await sleep(3)
@@ -426,6 +440,8 @@ async def endmute(event):
 @bot.on(sudo_cmd(pattern="pin($| (.*))", command="pin", allow_sudo=True))
 @errors_handler
 async def pin(msg):
+    if event.fwd_from:
+        return
     if not msg.is_private:
         chat = await msg.get_chat()
         admin = chat.admin_rights
@@ -464,6 +480,8 @@ async def pin(msg):
 @bot.on(sudo_cmd(pattern="unpin($| (.*))", command="unpin", allow_sudo=True))
 @errors_handler
 async def pin(msg):
+    if event.fwd_from:
+        return
     if not msg.is_private:
         chat = await msg.get_chat()
         admin = chat.admin_rights
@@ -512,6 +530,8 @@ async def pin(msg):
 @bot.on(sudo_cmd(pattern="kick(?: |$)(.*)", command="kick", allow_sudo=True))
 @errors_handler
 async def kick(usr):
+    if event.fwd_from:
+        return
     chat = await usr.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -547,6 +567,8 @@ async def kick(usr):
 @bot.on(admin_cmd(pattern="iundlt$", command="iundlt"))
 @bot.on(sudo_cmd(pattern="iundlt$", command="iundlt", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from:
         return
     c = await event.get_chat()

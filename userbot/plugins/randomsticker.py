@@ -18,6 +18,8 @@ PAT_IMAGE = "pat.webp"
 @bot.on(admin_cmd(pattern="cat$"))
 @bot.on(sudo_cmd(pattern="cat$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     try:
         await event.delete()
     except BaseException:

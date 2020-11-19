@@ -13,6 +13,8 @@ from . import CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
+    if event.fwd_from:
+        return
     start = datetime.now()
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):

@@ -177,6 +177,8 @@ async def info(event):
 @bot.on(admin_cmd(pattern="dc$"))
 @bot.on(sudo_cmd(pattern="dc$", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     result = await bot(functions.help.GetNearestDcRequest())
     result = (
         yaml_format(result)
@@ -193,6 +195,8 @@ async def _(event):
 
 @bot.on(admin_cmd(outgoing=True, pattern="setinline (true|false)"))
 async def _(event):
+    if event.fwd_from:
+        return
     global HELPTYPE
     input_str = event.pattern_match.group(1)
     if input_str == "true":

@@ -12,6 +12,8 @@ from . import CMD_HELP, yaml_format
 @bot.on(admin_cmd(pattern="bash (.*)"))
 @bot.on(sudo_cmd(pattern="bash (.*)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from or event.via_bot_id:
         return
     cmd = "".join(event.text.split(maxsplit=1)[1:])
@@ -42,6 +44,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="exec (.*)"))
 @bot.on(sudo_cmd(pattern="exec (.*)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.fwd_from or event.via_bot_id:
         return
     cmd = "".join(event.text.split(maxsplit=1)[1:])
@@ -81,6 +85,8 @@ async def _(event):
 @bot.on(admin_cmd(pattern="eval (.*)"))
 @bot.on(sudo_cmd(pattern="eval (.*)", allow_sudo=True))
 async def _(event):
+    if event.fwd_from:
+        return
     if event.via_bot_id:
         return
     cmd = event.text.split(" ", maxsplit=1)[1]
