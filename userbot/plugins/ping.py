@@ -10,8 +10,6 @@ from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     start = datetime.now()
     event = await edit_or_reply(event, "Pong!")
     end = datetime.now()
@@ -22,8 +20,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"fping$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"fping$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     start = datetime.now()

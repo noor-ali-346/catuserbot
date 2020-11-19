@@ -10,8 +10,6 @@ from . import CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     event = await edit_or_reply(event, "think")
     deq = deque(list("🤔🧐🤔🧐🤔🧐"))
     for _ in range(48):
@@ -23,8 +21,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"lmao$"))
 @bot.on(sudo_cmd(pattern="lmao$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "lmao")
@@ -40,8 +36,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     event = await edit_or_reply(event, "nathappy")
     deq = deque(list("😁☹️😁☹️😁☹️😁"))
     for _ in range(48):
@@ -53,8 +47,6 @@ async def _(event):
 @bot.on(admin_cmd(outgoing=True, pattern="clock$"))
 @bot.on(sudo_cmd(pattern="clock$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "clock")
@@ -70,8 +62,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     event = await edit_or_reply(event, "muah")
     deq = deque(list("😗😙😚😚😘"))
     for _ in range(48):
@@ -83,8 +73,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="heart$"))
 @bot.on(sudo_cmd(pattern="heart$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "heart")
@@ -100,8 +88,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     event = await edit_or_reply(event, "gym")
     deq = deque(list("🏃‍🏋‍🤸‍🏃‍🏋‍🤸‍🏃‍🏋‍🤸‍"))
     for _ in range(48):
@@ -113,8 +99,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"earth$", outgoing=True))
 @bot.on(sudo_cmd(pattern="earth$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "earth")
@@ -130,8 +114,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     event = await edit_or_reply(event, "moon")
     deq = deque(list("🌗🌘🌑🌒🌓🌔🌕🌖"))
     for _ in range(48):
@@ -143,8 +125,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"smoon$", outgoing=True))
 @bot.on(sudo_cmd(pattern="smoon$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "smoon")
@@ -169,8 +149,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"tmoon$", outgoing=True))
 @bot.on(sudo_cmd(pattern="tmoon$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "tmoon")

@@ -24,8 +24,6 @@ from . import spamwatch
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     replied_user, error_i_a = await get_full_user(event)
     if replied_user is None:
         return await edit_or_reply(event, f"`{str(error_i_a)}`")

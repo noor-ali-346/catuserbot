@@ -14,8 +14,6 @@ from . import CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     link = event.pattern_match.group(1)
     firmware = f"firmware"
     catevent = await edit_or_reply(event, "```Processing```")
@@ -38,8 +36,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="vendor(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="vendor(?: |$)(.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     link = event.pattern_match.group(1)
@@ -66,8 +62,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     link = event.pattern_match.group(1)
     specs = f"specs"
     catevent = await edit_or_reply(event, "```Processing```")
@@ -90,8 +84,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="fastboot(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="fastboot(?: |$)(.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     link = event.pattern_match.group(1)
@@ -118,8 +110,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     link = event.pattern_match.group(1)
     recovery = f"recovery"
     catevent = await edit_or_reply(event, "```Processing```")
@@ -144,8 +134,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     link = event.pattern_match.group(1)
     pitch = f"pb"
     catevent = await edit_or_reply(event, "```Processing```")
@@ -168,8 +156,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="of(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="of(?: |$)(.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     link = event.pattern_match.group(1)

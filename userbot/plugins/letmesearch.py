@@ -11,8 +11,6 @@ from . import CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group(1)
     sample_url = "https://da.gd/s?url=http://google.com/search?q={}".format(
         input_str.replace(" ", "+")
@@ -33,8 +31,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="lmy (.*)"))
 @bot.on(sudo_cmd(pattern="lmy (.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
@@ -61,8 +57,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group(1)
     sample_url = (
         "https://da.gd/s?url=https://duckduckgo.com/?q={}&t=h_&ia=about".format(
@@ -87,8 +81,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group(1)
     sample_url = "https://da.gd/s?url=https://www.altnews.in/?s={}".format(
         input_str.replace(" ", "+")
@@ -109,8 +101,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="lmvar (.*)"))
 @bot.on(sudo_cmd(pattern="lmvar (.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
@@ -137,8 +127,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group(1)
     sample_url = "https://da.gd/s?url=https://dashboard.heroku.com/apps/{}/logs".format(
         input_str.replace(" ", "+")
@@ -159,8 +147,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="dyno (.*)"))
 @bot.on(sudo_cmd(pattern="dyno (.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
@@ -185,8 +171,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group(1)
     sample_url = "https://da.gd/s?url=https://indiankanoon.org/search/?formInput={}+sortby%3Amostrecent".format(
         input_str.replace(" ", "+")
@@ -209,8 +193,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group(1)
     sample_url = "https://da.gd/s?url=https://mkp.gem.gov.in/search?q={}&sort_type=created_at_desc&_xhr=1".format(
         input_str.replace(" ", "+")
@@ -231,8 +213,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="archive (.*)"))
 @bot.on(sudo_cmd(pattern="archive (.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)

@@ -29,8 +29,6 @@ thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group(1)
     mone = await edit_or_reply(event, "Zipping in progress....")
     if event.reply_to_msg_id:
@@ -73,8 +71,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="unzip ?(.*)"))
 @bot.on(sudo_cmd(pattern="unzip ?(.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
@@ -150,8 +146,6 @@ def zipdir(dirName):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group(1)
     mone = await edit_or_reply(event, "Processing ...")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
@@ -198,8 +192,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=("tar ?(.*)")))
 @bot.on(sudo_cmd(pattern="tar ?(.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
@@ -281,8 +273,6 @@ async def create_archive(input_directory):
 @bot.on(admin_cmd(pattern="unrar"))
 @bot.on(sudo_cmd(pattern="unrar", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     mone = await edit_or_reply(event, "Processing ...")
@@ -372,8 +362,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="untar"))
 @bot.on(sudo_cmd(pattern="untar", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     mone = await edit_or_reply(event, "Processing ...")

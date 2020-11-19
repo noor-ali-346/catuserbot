@@ -11,8 +11,6 @@ TRT_LANG = "en"
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     if "trim" in event.raw_text:
         # https://t.me/c/1220993104/192075
         return

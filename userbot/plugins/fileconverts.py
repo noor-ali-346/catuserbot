@@ -206,8 +206,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     if not event.reply_to_msg_id:
         await edit_or_reply(event, "```Reply to any media file.```")
         return

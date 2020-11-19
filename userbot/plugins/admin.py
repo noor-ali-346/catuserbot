@@ -569,8 +569,6 @@ async def kick(usr):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     c = await event.get_chat()
     if c.admin_rights or c.creator:
         a = await event.client.get_admin_log(

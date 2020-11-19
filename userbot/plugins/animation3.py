@@ -12,8 +12,6 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     event = await edit_or_reply(event, "`stars.....`")
     deq = deque(list("🦋✨🦋✨🦋✨🦋✨"))
     for _ in range(48):
@@ -25,8 +23,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"boxs$", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"boxs$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "`boxs...`")
@@ -42,8 +38,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     event = await edit_or_reply(event, "`Raining.......`")
     deq = deque(list("🌬☁️🌩🌨🌧🌦🌥⛅🌤"))
     for _ in range(48):
@@ -55,8 +49,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"deploy$", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"deploy$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     animation_interval = 3
@@ -129,8 +121,6 @@ async def _(message):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     animation_interval = 1
     animation_ttl = range(10)
     animation_chars = [
@@ -155,8 +145,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"loveu$", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"loveu$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     animation_interval = 0.5
@@ -209,8 +197,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     event = await edit_or_reply(event, "Wait for plane...")
     await event.edit("✈-------------")
     await event.edit("-✈------------")
@@ -232,8 +218,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"police$", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"police$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     animation_interval = 0.3
@@ -261,8 +245,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"jio$", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"jio$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     animation_interval = 1
@@ -297,8 +279,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"solarsystem$", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"solarsystem$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     animation_interval = 0.1

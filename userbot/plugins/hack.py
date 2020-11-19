@@ -15,8 +15,6 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
         await event.client(GetFullUserRequest(reply_message.sender_id))
@@ -54,8 +52,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     animation_interval = 2
     animation_ttl = range(12)
     event = await edit_or_reply(event, "thack")
@@ -80,8 +76,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"wahack$", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"wahack$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     animation_interval = 2

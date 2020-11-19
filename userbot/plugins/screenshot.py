@@ -19,8 +19,6 @@ from . import CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     if Config.CHROME_BIN is None:
         await edit_or_reply(event, "Need to install Google Chrome. Module Stopping.")
         return
@@ -86,8 +84,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="scapture (.*)"))
 @bot.on(sudo_cmd(pattern="scapture (.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     start = datetime.now()

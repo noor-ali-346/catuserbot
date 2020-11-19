@@ -26,8 +26,6 @@ logger.info(Config.OPEN_LOAD_LOGIN)
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     current_message_text = event.raw_text
     cmt = current_message_text.split(" ")
     reply_message = await event.get_reply_message()

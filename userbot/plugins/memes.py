@@ -366,8 +366,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     if not input_str and reply:

@@ -14,8 +14,6 @@ from . import CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     chat = "@cricbuzz_bot"
     reply_to_id = event.message
     catevent = await edit_or_reply(event, "```Gathering info...```")
@@ -44,8 +42,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=r"cric (.*)"))
 @bot.on(sudo_cmd(pattern=r"cric (.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     details = event.pattern_match.group(1)

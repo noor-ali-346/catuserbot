@@ -12,8 +12,6 @@ from . import CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     warn_reason = event.pattern_match.group(1)
     if not warn_reason:
         warn_reason = "No reason"
@@ -48,8 +46,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     reply_message = await event.get_reply_message()
     result = sql.get_warns(reply_message.sender_id, event.chat_id)
     if result and result[0] != 0:
@@ -76,8 +72,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="resetwarns$"))
 @bot.on(sudo_cmd(pattern="resetwarns$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     reply_message = await event.get_reply_message()

@@ -159,8 +159,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     reply_message = event
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()

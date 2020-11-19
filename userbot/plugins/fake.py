@@ -20,8 +20,6 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group(1)
     action = "typing"
     if input_str:
@@ -37,8 +35,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="prankpromote ?(.*)"))
 @bot.on(sudo_cmd(pattern="prankpromote ?(.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     datetime.now()
@@ -62,8 +58,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"padmin$", outgoing=True))
 @bot.on(sudo_cmd(pattern="padmin$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     animation_interval = 1

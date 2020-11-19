@@ -139,8 +139,6 @@ async def on_afk(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     global USERAFK_ON
     global afk_time
     global last_afk_message

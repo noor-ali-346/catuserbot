@@ -39,8 +39,6 @@ async def kickme(leave):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     mentions = "**Admins in this Group**: \n"
     reply_message = None
     if event.reply_to_msg_id:
@@ -92,8 +90,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="bots ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="bots ?(.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     mentions = "**Bots in this Group**: \n"
@@ -205,8 +201,6 @@ async def info(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group(1)
     if input_str:
         logger.info("TODO: Not yet Implemented")
@@ -236,8 +230,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="ikuck ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="ikuck ?(.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     if event.is_private:

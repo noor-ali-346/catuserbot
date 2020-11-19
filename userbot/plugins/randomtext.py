@@ -20,8 +20,6 @@ from . import CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     event = await edit_or_reply(event, "Singing...")
     await sleep(2)
     x = random.randrange(1, 33)
@@ -162,8 +160,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     event = await edit_or_reply(event, "`.....`")
     await sleep(2)
     x = random.randrange(1, 40)
@@ -252,8 +248,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"gott$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"gott$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "Typing...")
@@ -404,8 +398,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"gotm$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"gotm$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "Thinking... 🤔")
@@ -566,8 +558,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="bello$", outgoing=True))
 @bot.on(sudo_cmd(pattern="bello$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "Typing....")
@@ -956,8 +946,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     await edit_or_reply(event, "Well, let me give you a life-pro tip... 😉")
     await sleep(2)
     x = random.randrange(1, 87)
@@ -1320,8 +1308,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     event = await edit_or_reply(event, "selecting question...")
     await sleep(2)
     x = random.randrange(1, 60)
@@ -1508,8 +1494,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"logic$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"logic$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     await asyncio.sleep(0.5)

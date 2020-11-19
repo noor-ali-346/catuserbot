@@ -115,8 +115,6 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if event.fwd_from:
-        return
     input_str = event.pattern_match.group(1)
     peer_id = event.chat_id
     if input_str in (("bots", "commands", "email", "forward", "url")):
@@ -214,8 +212,6 @@ async def _(event):
 @bot.on(admin_cmd(pattern="locks$"))
 @bot.on(sudo_cmd(pattern="locks$", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
-        return
     if event.fwd_from:
         return
     res = ""
