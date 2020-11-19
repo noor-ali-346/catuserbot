@@ -1,11 +1,12 @@
 # catuserbot module containing hash and encode/decode commands.
 
 import base64
+import time
 from subprocess import PIPE
 from subprocess import run as runapp
-import time
-from . import CMD_HELP, media_type
+
 from ..utils import admin_cmd, errors_handler, sudo_cmd
+from . import CMD_HELP, media_type
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="hash (.*)"))
@@ -50,12 +51,12 @@ async def endecrypt(event):
     catevent = event
     if event.pattern_match.group(1) == "en":
         if string:
-            result = base64.b64encode(bytes(string, "utf-8")).decode("utf-8")
+            base64.b64encode(bytes(string, "utf-8")).decode("utf-8")
         else:
             reply = await event.get_reply_message()
             mediatype = media_type(reply)
             if mediatype is not None:
-                result = base64.b64encode(bytes(reply.text, "utf-8")).decode("utf-8")
+                base64.b64encode(bytes(reply.text, "utf-8")).decode("utf-8")
             else:
                 catevent = await edit_or_reply(event , "`Encoding ...`")
                 c_time = time.time()
@@ -67,7 +68,7 @@ async def endecrypt(event):
                     ),
                 )
                 with open(reply, "rb") as image_file:
-                    result = base64.b64encode(image_file.read()).decode("utf-8")  
+                    base64.b64encode(image_file.read()).decode("utf-8")  
         await edit_or_reply(catevent, "**Shhh! It's Encoded : **\n`{result}`",file_name="encodedfile.txt",caption = "It's Encoded")
     else:
         lething = str(
