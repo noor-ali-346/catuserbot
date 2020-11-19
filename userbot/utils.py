@@ -217,7 +217,7 @@ def sudo_cmd(pattern=None, command=None, **args):
 
 # https://t.me/c/1220993104/623253
 # https://docs.telethon.dev/en/latest/misc/changelog.html#breaking-changes
-async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_name=None,aslink=False,linktext=None):
+async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_name=None,aslink=False,linktext=None,caption=None):
     link_preview = link_preview or False
     reply_to = await event.get_reply_message()
     if len(text) < 4096:
@@ -245,15 +245,16 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
             return await event.reply(text, link_preview=link_preview)
         return await event.edit(text, link_preview=link_preview)
     file_name = file_name or "output.txt"
+    caption = caption or None
     with open(file_name, "w+") as output:
-            output.write(result)
+        output.write(result)
     if reply_to:
-        await reply_to.reply(file=out_file)
+        await reply_to.reply(file=out_file,caption = caption)
         return os.remove(out_file)
     if event.sender_id in Config.SUDO_USERS:
-        await event.reply(file=out_file)
+        await event.reply(file=out_file,caption = caption)
         return os.remove(out_file)
-    await event.client.send_file(event.chat_id , out_file)
+    await event.client.send_file(event.chat_id , out_file,caption = caption)
     os.remove(out_file)
 
 
