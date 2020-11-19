@@ -43,7 +43,6 @@ programmingquotes
 psutil
 psycopg2
 PyDictionary
-pyDownload
 pyfiglet
 PyGithub
 pylast
