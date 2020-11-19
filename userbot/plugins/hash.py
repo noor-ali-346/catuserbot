@@ -41,8 +41,8 @@ async def gethash(hash_q):
     await edit_or_reply(hash_q, ans)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="hbase (en|de) (.*)"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern="hbase (en|de) (.*)"))
+@bot.on(admin_cmd(outgoing=True, pattern="hbase (en|de) ?(.*)"))
+@bot.on(sudo_cmd(allow_sudo=True, pattern="hbase (en|de) ?(.*)"))
 @errors_handler
 async def endecrypt(event):
     if event.fwd_from:
