@@ -72,6 +72,7 @@ async def endecrypt(event):
                         progress(d, t, catevent, c_time, "trying to download")
                     ),
                 )
+                catevent = await edit_or_reply(event , "`Encoding ...`")
                 with open(downloaded_file_name, "rb") as image_file:
                     result = base64.b64encode(image_file.read()).decode("utf-8")  
         await edit_or_reply(catevent, result ,file_name="encodedfile.txt",caption = "It's Encoded")
