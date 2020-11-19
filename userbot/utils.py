@@ -255,23 +255,6 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
 
 
 
-
-# from paperplaneextended
-on = bot.on
-
-
-def on(**args):
-    def decorator(func):
-        async def wrapper(event):
-            # do things like check if sudo
-            await func(event)
-
-        client.add_event_handler(wrapper, events.NewMessage(**args))
-        return wrapper
-
-    return decorater
-
-
 async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None):
     parse_mode = parse_mode or "md"
     link_preview = link_preview or False
