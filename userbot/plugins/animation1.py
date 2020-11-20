@@ -238,7 +238,7 @@ async def _(event):
 @bot.on(admin_cmd(pattern=f"charging$"))
 @bot.on(sudo_cmd(pattern=f"charging$", allow_sudo=True))
 async def timer_blankx(e):
-    if event.fwd_from:
+    if e.fwd_from:
         return
     e = await edit_or_reply(e, "charging")
     txt = (
