@@ -1,5 +1,4 @@
 import asyncio
-import io
 
 from telethon import events, functions
 
