@@ -86,8 +86,8 @@ async def aexec(code, smessatatus):
     message = event = smessatatus
     p = lambda _x: print(yaml_format(_x))
     reply = await event.get_reply_message()
-    exec(f'async def __aexec(message, event , reply, client, p): ' +'\n event = smessatatus = message' + ''.join(f'\n {l}' for l in code.split('\n')))
-    return await locals()['__aexec'](message, event ,reply, message.client, p)
+    exec(f'async def __aexec(message, event , reply, client, p, chat): ' + ''.join(f'\n {l}' for l in code.split('\n')))
+    return await locals()['__aexec'](message, event ,reply, message.client, p,message.chat_id)
 
 CMD_HELP.update(
     {
