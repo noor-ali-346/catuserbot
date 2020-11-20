@@ -23,7 +23,7 @@ DEVICES_DATA = (
 @bot.on(admin_cmd(pattern=r"magisk"))
 @bot.on(sudo_cmd(pattern=r"magisk", allow_sudo=True))
 async def kakashi(magisk):
-    if event.fwd_from:
+    if magisk.fwd_from:
         return
     magisk_repo = "https://raw.githubusercontent.com/topjohnwu/magisk_files/"
     magisk_dict = {
@@ -52,7 +52,7 @@ async def kakashi(magisk):
 @bot.on(admin_cmd(outgoing=True, pattern=r"device(?: |$)(\S*)"))
 @bot.on(sudo_cmd(pattern=r"device(?: |$)(\S*)", allow_sudo=True))
 async def device_info(request):
-    if event.fwd_from:
+    if request.fwd_from:
         return
     """ get android device basic info from its codename """
     textx = await request.get_reply_message()
@@ -87,7 +87,7 @@ async def device_info(request):
 @bot.on(admin_cmd(outgoing=True, pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)"))
 @bot.on(sudo_cmd(pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)", allow_sudo=True))
 async def codename_info(request):
-    if event.fwd_from:
+    if request.fwd_from:
         return
     """ search for android codename """
     textx = await request.get_reply_message()
@@ -134,7 +134,7 @@ async def codename_info(request):
 @bot.on(admin_cmd(outgoing=True, pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)"))
 @bot.on(sudo_cmd(pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)", allow_sudo=True))
 async def devices_specifications(request):
-    if event.fwd_from:
+    if request.fwd_from:
         return
     """ Mobile devices specifications """
     textx = await request.get_reply_message()
@@ -199,7 +199,7 @@ async def devices_specifications(request):
 @bot.on(admin_cmd(outgoing=True, pattern=r"twrp(?: |$)(\S*)"))
 @bot.on(sudo_cmd(pattern=r"twrp(?: |$)(\S*)", allow_sudo=True))
 async def twrp(request):
-    if event.fwd_from:
+    if request.fwd_from:
         return
     """ get android device twrp """
     textx = await request.get_reply_message()
