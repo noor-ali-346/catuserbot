@@ -57,8 +57,6 @@ if bool(ENV):
             "Please remove the line mentioned in the first hashtag from the config.env file"
         )
         quit(1)
-    BOTLOG_CHATID = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID", "-100"))
-    BOTLOG = sb(os.environ.get("BOTLOG", "True"))
     CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
     # Chrome Driver and Headless Google Chrome Binaries
     CHROME_DRIVER = os.environ.get(
@@ -67,12 +65,6 @@ if bool(ENV):
     GOOGLE_CHROME_BIN = os.environ.get(
         "GOOGLE_CHROME_BIN", "/app/.apt/usr/bin/google-chrome"
     )
-    # OpenWeatherMap API Key
-    OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
-    # Youtube API key
-    YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
-    # Default .alive name
-    ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
     AUTONAME = os.environ.get("AUTONAME", None)
     UPSTREAM_REPO_URL = os.environ.get(
         "UPSTREAM_REPO_URL", "https://github.com/sandy1709/catuserbot.git"
