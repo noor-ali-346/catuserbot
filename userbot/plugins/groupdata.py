@@ -24,7 +24,7 @@ from telethon.tl.types import (ChannelParticipantAdmin,
                                UserStatusOnline, UserStatusRecently)
 from telethon.utils import get_input_location
 
-from .. import BOTLOG, BOTLOG_CHATID, CMD_HELP
+from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
