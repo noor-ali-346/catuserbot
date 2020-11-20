@@ -3,7 +3,7 @@ import re
 
 from telethon import events
 
-from .. import BOTLOG_CHATID, CMD_HELP, bot
+from . import BOTLOG_CHATID, CMD_HELP
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 from .sql_helper.filter_sql import (add_filter, get_filters,
                                     remove_all_filters, remove_filter)
