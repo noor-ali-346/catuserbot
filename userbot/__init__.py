@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
-from .Config import Config
 
+from .Config import Config
 
 StartTime = time.time()
 catversion = "2.9.1"
