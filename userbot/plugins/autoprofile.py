@@ -17,8 +17,8 @@ from pySmartDL import SmartDL
 from telethon.errors import FloodWaitError
 from telethon.tl import functions
 
-from . import AUTONAME, CMD_HELP, DEFAULT_BIO
 from ..utils import admin_cmd
+from . import AUTONAME, CMD_HELP, DEFAULT_BIO
 
 DEFAULTUSERBIO = str(DEFAULT_BIO) if DEFAULT_BIO else " ᗯᗩᏆᎢᏆᑎᏀ ᏞᏆᏦᗴ ᎢᏆᗰᗴ  "
 CHANGE_TIME = Config.CHANGE_TIME
