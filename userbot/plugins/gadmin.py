@@ -144,7 +144,7 @@ async def catgban(cat):
         await cate.edit("you are not even admin of atleast one group ")
         return
     await cate.edit(
-        f"initiating ungban of the [user](tg://user?id={user.id}) in `{len(san)}`groups"
+        f"initiating ungban of the [user](tg://user?id={user.id}) in `{len(san)}` groups"
     )
     for i in range(sandy):
         try:
