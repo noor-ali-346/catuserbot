@@ -5,7 +5,7 @@ import os
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
-from .. import BOTLOG, BOTLOG_CHATID, CMD_HELP
+from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
