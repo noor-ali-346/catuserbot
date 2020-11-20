@@ -181,8 +181,8 @@ if Config.PRIVATE_GROUP_ID is not None:
             except BaseException:
                 return
         me =  await event.client.get_me()
-        mention = f"[{sender.first_name}]{sender.id}"
-        my_mention = f"[{me.first_name}]{me.id}"
+        mention = f"[{sender.first_name}](tg://user?id={sender.id})"
+        my_mention = f"[{me.first_name}](tg://user?id={me.id})"
         first = sender.first_name
         last = sender.last_name
         fullname = f"{first} {last}" if last else first
