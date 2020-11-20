@@ -262,28 +262,28 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "autoprofile": """**Plugin : **`autoprofile`\
+        "autoprofile": """**Plugin : **`autoprofile`
 
-  •  **Syntax : **`.autopic angle`\
-  •  **Function : **__Rotating image along with the time on it with given angle if no angle is given then doesnt rotate. You need to set __`DOWNLOAD_PFP_URL_CLOCK`__ in heroku__\
+  •  **Syntax : **`.autopic angle`
+  •  **Function : **__Rotating image along with the time on it with given angle if no angle is given then doesnt rotate. You need to set __`DOWNLOAD_PFP_URL_CLOCK`__ in heroku__
 
-  •  **Syntax : **`.digitalpfp`\
-  •  **Function : **__Your profile pic changes to digitaltime profile picutre__\
+  •  **Syntax : **`.digitalpfp`
+  •  **Function : **__Your profile pic changes to digitaltime profile picutre__
 
-  •  **Syntax : **`.bloom`\
-  •  **Function : **__Random colour profile pics will be set along with time on it. You need to set__ `DOWNLOAD_PFP_URL_CLOCK`__ in heroku__\
+  •  **Syntax : **`.bloom`
+  •  **Function : **__Random colour profile pics will be set along with time on it. You need to set__ `DOWNLOAD_PFP_URL_CLOCK`__ in heroku__
 
-  •  **Syntax : **`.autoname`\
-  •  **Function : **__for time along with name, you must set __`AUTONAME`__ in the heroku vars first for this to work__\
+  •  **Syntax : **`.autoname`
+  •  **Function : **__for time along with name, you must set __`AUTONAME`__ in the heroku vars first for this to work__
 
-  •  **Syntax : **`.autobio`\
-  •  **Function : **__for time along with your bio, Set __`DEFAULT_BIO`__ in the heroku vars first__\
+  •  **Syntax : **`.autobio`
+  •  **Function : **__for time along with your bio, Set __`DEFAULT_BIO`__ in the heroku vars first__
 
-  •  **Syntax : **`.end function`\
-  •  **Function : **__To stop the given functions like autopic ,difitalpfp , bloom , autoname and autobio__\
+  •  **Syntax : **`.end function`
+  •  **Function : **__To stop the given functions like autopic ,difitalpfp , bloom , autoname and autobio__
 
-**⚠️DISCLAIMER⚠️**\
-__USING THIS PLUGIN CAN RESULT IN ACCOUNT BAN. WE ARE NOT RESPONSIBLE FOR YOUR BAN.__\
+**⚠️DISCLAIMER⚠️**
+__USING THIS PLUGIN CAN RESULT IN ACCOUNT BAN. WE ARE NOT RESPONSIBLE FOR YOUR BAN.__
 """
     }
 )
