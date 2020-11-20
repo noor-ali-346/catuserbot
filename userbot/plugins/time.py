@@ -103,7 +103,7 @@ async def time_func(tdata):
     if c_name != COUNTRY:
         await edit_or_reply(
             tdata,
-            f"`It's`  **{dtnow1}**` on `**{dtnow2}**  `in {c_name}({time_zone} timezone).`",
+            f"`It's`  **{dtnow1}**` on `**{dtnow2}**  `in {c_name} ({time_zone} timezone).`",
         )
         return
     if COUNTRY:
