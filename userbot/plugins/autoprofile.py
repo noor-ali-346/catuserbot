@@ -58,7 +58,10 @@ async def autopic(event):
             input_str = -60
     else:
         input_str = 0
-    AUTOPICSTART = True
+    if AUTOPICSTART:
+        return await edit_delete(event , f"`Autopic is already enabled`")
+    else:
+        AUTOPICSTART = True
     counter = input_str
     await edit_delete(event , f"`Autopic has been started by my Master`")
     while AUTOPICSTART:
@@ -95,9 +98,12 @@ async def main(event):
         )
     )[2:51]
     downloaded_file_name = "userbot/digital_pic.png"
-    downloader = SmartDL(cat, downloaded_file_name, progress_bar=True)
+    downloader = SmartDL(cat, downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
-    DIGITALPICSTART = True
+    if DIGITALPICSTART:
+        return await edit_delete(event , f"`Digitalpfp is already enabled`")
+    else:
+        DIGITALPICSTART = True
     await edit_delete(event , f"`digitalpfp has been started by my Master`")
     while DIGITALPICSTART:
         shutil.copy(downloaded_file_name, poto)
@@ -135,7 +141,10 @@ async def autopic(event):
     photo = "userbot/photo_pfp.png"
     while not downloader.isFinished():
         pass
-    BLOOMSTART = True
+    if BLOOMSTART:
+        return await edit_delete(event , f"`Bloom is already enabled`")
+    else:
+        BLOOMSTART = True
     await edit_delete(event , "`Bloom colour profile pic have been enabled by my master`")
     while BLOOMSTART:
         # RIP Danger zone Here no editing here plox
@@ -173,7 +182,10 @@ async def _(event):
     if event.fwd_from:
         return
     global AUTONAMESTART
-    AUTONAMESTART = True
+    if AUTONAMESTART:
+        return await edit_delete(event , f"`Autoname is already enabled`")
+    else:
+        AUTONAMESTART = True
     await edit_delete(event , "`Auto Name has been started by my Master `")
     while AUTONAMESTART:
         DM = time.strftime("%d-%m-%y")
@@ -197,8 +209,11 @@ async def _(event):
     global AUTOBIOSTART
     if event.fwd_from:
         return
-    AUTOBIOSTART = True
-    await edit_delete(event , "`Auto bio has been started by my Master`")
+    if AUTOBIOSTART:
+        return await edit_delete(event , f"`Autobio is already enabled`")
+    else:
+        AUTOBIOSTART = True
+    await edit_delete(event , "`Autobio has been started by my Master`")
     while AUTOBIOSTART:
         DMY = time.strftime("%d.%m.%Y")
         HM = time.strftime("%H:%M:%S")
