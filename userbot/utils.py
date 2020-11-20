@@ -231,10 +231,14 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
     for i in asciich:
         text =  re.sub(rf"\{i}", "", text)
     if aslink:
-        text =  re.sub(r"•", ">>", text)
-        linktext= linktext or "Message was to big so pasted to nekobin"
-        kresult = requests.post("https://del.dog/documents", data=text.encode("UTF-8")).json()
-        text = linktext + f" [here](https://del.dog/{kresult['key']})"
+        linktext= linktext or "Message was to big so pasted to bin"
+        try:
+            key = requests.post("https://nekobin.com/api/documents", json={"content": data}).json().get("result").get("key")
+            text = linktext + f" [here](https://nekobin.com/{key})"
+        except:
+            text =  re.sub(r"•", ">>", text)
+            kresult = requests.post("https://del.dog/documents", data=text.encode("UTF-8")).json()
+            text = linktext + f" [here](https://del.dog/{kresult['key']})"
         if event.sender_id in Config.SUDO_USERS:
             if reply_to:
                 return await reply_to.reply(
