@@ -11,7 +11,7 @@ from ..utils import admin_cmd, sudo_cmd
 
 HEADER = "「sed」\n"
 KNOWN_RE_BOTS = re.compile(
-    r"(regex|moku|BananaButler_|rgx|l4mR)bot", flags=re.IGNORECASE
+    Config.GROUP_REG_SED_EX_BOT_S, flags=re.IGNORECASE
 )
 
 # Heavily based on

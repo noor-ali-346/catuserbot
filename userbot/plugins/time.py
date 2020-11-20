@@ -9,12 +9,13 @@ from pytz import country_timezones as c_tz
 from pytz import timezone as tz
 
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
-from . import CMD_HELP, COUNTRY, TZ_NUMBER
+from . import CMD_HELP
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 LOCATION = Config.TZ
-
+COUNTRY = Config.COUNTRY
+TZ_NUMBER = Config.TZ_NUMBER
 
 async def get_tz(con):
     """ Get time zone of the given country. """
