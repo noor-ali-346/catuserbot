@@ -233,7 +233,7 @@ async def edit_or_reply(event, text, parse_mode=None, link_preview=None,file_nam
     if aslink:
         linktext= linktext or "Message was to big so pasted to bin"
         try:
-            key = requests.post("https://nekobin.com/api/documents", json={"content": data}).json().get("result").get("key")
+            key = requests.post("https://nekobin.com/api/documents", json={"content": text}).json().get("result").get("key")
             text = linktext + f" [here](https://nekobin.com/{key})"
         except:
             text =  re.sub(r"•", ">>", text)
