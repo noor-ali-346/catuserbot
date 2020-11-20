@@ -5,7 +5,7 @@ import requests
 from github import Github
 
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
-from . import CMD_HELP
+from . import CMD_HELP, reply_id
 
 GIT_TEMP_DIR = "./temp/"
 
@@ -15,6 +15,7 @@ GIT_TEMP_DIR = "./temp/"
 async def _(event):
     if event.fwd_from:
         return
+    reply_to_id = await reply_id(event)
     input_str = event.pattern_match.group(1)
     url = "https://api.github.com/users/{}".format(input_str)
     r = requests.get(url)
@@ -29,7 +30,7 @@ async def _(event):
         location = b["location"]
         bio = b["bio"]
         created_at = b["created_at"]
-        await bot.send_file(
+        await event.client.send_file(
             event.chat_id,
             caption="""**Name : **[{}]({})
 **Type :** {}
@@ -43,7 +44,7 @@ async def _(event):
             file=avatar_url,
             force_document=False,
             allow_cache=False,
-            reply_to=event,
+            reply_to=reply_to_id,
         )
         await event.delete()
     else:
