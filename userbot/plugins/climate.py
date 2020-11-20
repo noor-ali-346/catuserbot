@@ -17,7 +17,6 @@ from pytz import country_timezones as c_tz
 from pytz import timezone as tz
 
 from .. import CMD_HELP
-from .. import OPEN_WEATHER_MAP_APPID as OWM_API
 from ..utils import admin_cmd, edit_or_reply, errors_handler, sudo_cmd
 
 logging.basicConfig(
@@ -27,7 +26,7 @@ logging.basicConfig(
 # ===== CONSTANT =====
 DEFCITY = "Delhi"
 # ====================
-
+OWN_API = Config.OPEN_WEATHER_MAP_APPID
 
 async def get_tz(con):
     # Get time zone of the given country. Credits: @aragon12 and @zakaryan2004.
