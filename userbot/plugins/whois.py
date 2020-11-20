@@ -14,9 +14,9 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
 
-from . import CMD_HELP, LOGS
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
-from . import spamwatch
+from . import CMD_HELP, LOGS, spamwatch
+
 TMP_DOWNLOAD_DIRECTORY= Config.TMP_DOWNLOAD_DIRECTORY
 
 @bot.on(admin_cmd(pattern="userinfo(?: |$)(.*)"))
