@@ -49,7 +49,7 @@ async def amireallyalive(alive):
 async def amireallyalive(alive):
     if alive.fwd_from:
         return
-    tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
+    tgbotusername = Config.TG_BOT_USER_NAME_BF_HER
     reply_to_id = await reply_id(alive)
     cat_caption = f"**Catuserbot is Up and Running**\n"
     cat_caption += f"**  -Telethon version :** `{version.__version__}\n`"
@@ -76,7 +76,7 @@ def check_data_base_heal_th():
     # https://stackoverflow.com/a/41961968
     is_database_working = False
     output = "No Database is set"
-    if not Var.DB_URI:
+    if not Config.DB_URI:
         return is_database_working, output
     from userbot.plugins.sql_helper import SESSION
 

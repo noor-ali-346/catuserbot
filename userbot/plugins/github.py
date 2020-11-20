@@ -55,10 +55,10 @@ async def _(event):
 async def download(event):
     if event.fwd_from:
         return
-    if Var.GITHUB_ACCESS_TOKEN is None:
+    if Config.GITHUB_ACCESS_TOKEN is None:
         await edit_or_reply(event, "`Please ADD Proper Access Token from github.com`")
         return
-    if Var.GIT_REPO_NAME is None:
+    if Config.GIT_REPO_NAME is None:
         await edit_or_reply(
             event, "`Please ADD Proper Github Repo Name of your userbot`"
         )
@@ -87,11 +87,11 @@ async def download(event):
 
 async def git_commit(file_name, mone):
     content_list = []
-    access_token = Var.GITHUB_ACCESS_TOKEN
+    access_token = Config.GITHUB_ACCESS_TOKEN
     g = Github(access_token)
     file = open(file_name, "r", encoding="utf-8")
     commit_data = file.read()
-    repo = g.get_repo(Var.GIT_REPO_NAME)
+    repo = g.get_repo(Config.GIT_REPO_NAME)
     print(repo.name)
     create_file = True
     contents = repo.get_contents("")
@@ -111,7 +111,7 @@ async def git_commit(file_name, mone):
                 file_name, "Uploaded New Plugin", commit_data, branch="master"
             )
             print("Committed File")
-            ccess = Var.GIT_REPO_NAME
+            ccess = Config.GIT_REPO_NAME
             ccess = ccess.strip()
             await mone.edit(
                 f"`Commited On Your Github Repo`\n\n[Your PLUGINS](https://github.com/{ccess}/tree/master/userbot/plugins/)"

@@ -18,7 +18,6 @@ from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import (ChannelParticipantAdmin,
                                ChannelParticipantCreator)
 
-from var import Var
 
 from . import CMD_LIST, LOAD_PLUG, LOGS, SUDO_LIST, bot
 from .helpers.exceptions import CancelProcess
@@ -55,7 +54,7 @@ def load_module(shortname):
         mod = importlib.util.module_from_spec(spec)
         mod.bot = bot
         mod.tgbot = bot.tgbot
-        mod.Var = Var
+        mod.Config = Config
         mod.command = command
         mod.logger = logging.getLogger(shortname)
         # support for uniborg
@@ -417,7 +416,7 @@ def time_formatter(milliseconds: int) -> str:
 
 class Loader:
     def __init__(self, func=None, **args):
-        self.Var = Var
+        self.Config = Config
         bot.add_event_handler(func, events.NewMessage(**args))
 
 

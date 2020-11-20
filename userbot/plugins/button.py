@@ -86,7 +86,7 @@ async def _(event):
         await edit_or_reply(event, "`Give me something to write in bot inline`")
         return
     catinput = "Inline buttons " + catinput
-    tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
+    tgbotusername = Config.TG_BOT_USER_NAME_BF_HER
     results = await bot.inline_query(tgbotusername, catinput)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
