@@ -1,6 +1,7 @@
 import asyncio
 from datetime import datetime
-from random import choice, getrandbits, randint
+from random import choice, randint
+
 from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.types import ChatAdminRights
 
@@ -16,8 +17,16 @@ async def _(event):
     if event.fwd_from:
         return
     options = [
-        'typing', 'contact', 'game', 'location', 'voice', 'round', 'video',
-        'photo', 'document', 'cancel'
+        "typing",
+        "contact",
+        "game",
+        "location",
+        "voice",
+        "round",
+        "video",
+        "photo",
+        "document",
+        "cancel",
     ]
     input_str = event.pattern_match.group(1)
     args = input_str.split()
@@ -35,10 +44,10 @@ async def _(event):
         scam_action = str(args[0]).lower()
         scam_time = int(args[1])
     else:
-        await edit_delete(event , "`Invalid Syntax !!`")
+        await edit_delete(event, "`Invalid Syntax !!`")
         return
     try:
-        if (scam_time > 0):
+        if scam_time > 0:
             await event.delete()
             async with event.client.action(event.chat_id, scam_action):
                 await sleep(scam_time)
