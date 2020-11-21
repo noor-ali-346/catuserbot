@@ -1,5 +1,5 @@
 from telethon.tl.types import ChannelParticipantsAdmins, ChannelParticipantsRecent
-
+from telethon.tl.functions.users import GetFullUserRequest
 from ..utils import admin_cmd, sudo_cmd
 from . import CMD_HELP, htmlmentionuser, reply_id
 
@@ -13,13 +13,17 @@ async def _(event):
     mentions = "hi all "
     chat = await event.get_input_chat()
     async for x in event.client.iter_participants(
-        chat, filter=ChannelParticipantsRecent, limit=50
+        chat, filter=ChannelParticipantsRecent, limit=100
     ):
         if x.id != event.client.uid:
-            if x.username:
-                mentions += htmlmentionuser(f"@{x.username}", f"{x.id}") + " "
-            else:
-                mentions += htmlmentionuser(f"{x.first_name}", f"{x.id}") + " "
+            try:
+                x = await event.client(GetFullUserRequest(x.id))
+                if x.username:
+                    mentions += htmlmentionuser(f"@{x.username}", f"{x.id}") + " "
+                else:
+                    mentions += htmlmentionuser(f"{x.first_name}", f"{x.id}") + " "
+           except:
+               pass
     await event.client.send_message(
         event.chat_id, mentions, reply_to=reply_to_id, parse_mode="html"
     )
