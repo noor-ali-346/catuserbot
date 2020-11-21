@@ -17,9 +17,9 @@ async def _(event):
     ):
         if x.id != event.client.uid:
             if x.username:
-                mentions += htmlmentionuser(f"@{x.username}", f"{x.id}") + " " 
+                mentions += htmlmentionuser(f"@{x.username}", f"{x.id}") + " "
             else:
-                mentions += htmlmentionuser(f"{x.first_name}", f"{x.id}") + " " 
+                mentions += htmlmentionuser(f"{x.first_name}", f"{x.id}") + " "
     await event.client.send_message(
         event.chat_id, mentions, reply_to=reply_to_id, parse_mode="html"
     )
