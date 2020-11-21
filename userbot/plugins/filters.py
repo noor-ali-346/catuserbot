@@ -85,7 +85,7 @@ async def on_snip_list(event):
         if OUT_STR == "There are no filters in this chat.":
             OUT_STR = "Active filters in this chat:\n"
         OUT_STR += "👉 `{}`\n".format(filt.keyword)
-   await edit_or_reply(event, OUT_STR,caption="Available Filters in the Current Chat",file_name="filters.text")
+    await edit_or_reply(event, OUT_STR,caption="Available Filters in the Current Chat",file_name="filters.text")
 
 
 @bot.on(admin_cmd(pattern="stop (.*)"))
