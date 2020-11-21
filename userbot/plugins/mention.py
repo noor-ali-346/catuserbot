@@ -12,7 +12,7 @@ async def _(event):
     reply_to_id = await reply_id(event)
     mentions = "hi all"
     chat = await event.get_input_chat()
-    async for x in event.client.iter_participants(chat, 100):
+    async for x in event.client.iter_participants(chat, 50):
         if x.username:
             mentions += f" @{x.username}"
     await event.client.send_message(event.chat_id, mentions, reply_to=reply_to_id)
