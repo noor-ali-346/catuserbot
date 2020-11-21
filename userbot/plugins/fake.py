@@ -35,7 +35,7 @@ async def _(event):
     elif len(args) == 1:
         try:
             scam_action = str(args[0]).lower()
-            scam_time = randint(300, 360)
+            scam_time = randint(200, 300)
         except ValueError:
             scam_action = choice(options)
             scam_time = int(args[0])
@@ -48,8 +48,6 @@ async def _(event):
     try:
         if scam_time > 0:
             await event.delete()
-            print(scam_action)
-            print(scam_time)
             async with event.client.action(event.chat_id, scam_action):
                 await asyncio.sleep(scam_time)
     except BaseException:
