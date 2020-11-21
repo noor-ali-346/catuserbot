@@ -243,6 +243,8 @@ CMD_HELP.update(
         \n  •  **Function : **__Unblocks the person.__\
         \n\n  •  **Syntax : **`.listapproved`\
         \n  •  **Function : **__To list the all approved users.__\
+        \n\n  •  Available variables for formatting `CUSTOM_PMPERMIT_TEXT` :\
+        \n`{mention}, {first}, {last}, {fullname}, {userid}, {username}, {my_first}, {my_fullname}, {my_last}, {my_mention}, {my_username}`\
 "
     }
 )
