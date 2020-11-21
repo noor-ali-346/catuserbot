@@ -10,7 +10,7 @@ class Config((object)):
     LOGGER = True
     # Default .alive name
     ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
-    #For customizing there alive message
+    # For customizing there alive message
     CUSTOM_ALIVE_TEXT = os.environ.get("CUSTOM_ALIVE_TEXT", None)
     CUSTOM_ALIVE_EMOJI = os.environ.get("CUSTOM_ALIVE_EMOJI", None)
     # for profile default name
