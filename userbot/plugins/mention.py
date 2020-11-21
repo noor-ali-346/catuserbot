@@ -13,9 +13,11 @@ async def _(event):
     mentions = "hi all "
     chat = await event.get_input_chat()
     async for x in event.client.iter_participants(
-        chat, filter=ChannelParticipantsRecent, limit=100
+        chat, filter=ChannelParticipantsRecent, limit=50
     ):
         if x.id != event.client.uid:
+            try:
+                x = await event.client
             if x.username:
                 mentions += htmlmentionuser(f"@{x.username}", f"{x.id}") + " "
             else:
