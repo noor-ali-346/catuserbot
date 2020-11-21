@@ -1,8 +1,6 @@
 # pm and tagged messages logger for catuserbot by @mrconfused (@sandy1709)
 import asyncio
 
-from telethon import events
-
 import userbot.plugins.sql_helper.no_log_pms_sql as no_log_pms_sql
 
 from ..utils import admin_cmd
