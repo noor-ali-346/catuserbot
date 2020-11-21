@@ -1,7 +1,7 @@
 from telethon.tl.types import ChannelParticipantsAdmins, ChannelParticipantsRecent
 
 from ..utils import admin_cmd, sudo_cmd
-from . import CMD_HELP, reply_id
+from . import CMD_HELP, reply_id, htmlmentionuser
 
 
 @bot.on(admin_cmd(pattern="tagall$"))
@@ -17,10 +17,10 @@ async def _(event):
     ):
         if x.id != event.client.uid:
             if x.username:
-                mentions += f"[@{x.username}](tg://user?id={x.id}) "
+                mentions += htmlmentionuser( f"@{x.username}" , f"{x.id}")
             else:
-                mentions += f"[{x.first_name}](tg://user?id={x.id}) "
-    await event.client.send_message(event.chat_id, mentions, reply_to=reply_to_id)
+                mentions += htmlmentionuser( f"{x.first_name}" , f"{x.id}")
+    await event.client.send_message(event.chat_id, mentions, reply_to=reply_to_id,parse_mode ="html")
     await event.delete()
 
 
