@@ -18,7 +18,7 @@ async def _(event):
     ):
         if x.id != event.client.uid:
             try:
-                hi =int(f"{x.id}")
+                hi = int(f"{x.id}")
                 x = await event.client(GetFullUserRequest(hi))
                 if x.username:
                     mentions += htmlmentionuser(f"@{x.username}", f"{x.id}") + " "
