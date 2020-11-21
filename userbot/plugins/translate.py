@@ -1,5 +1,7 @@
-from googletrans import LANGUAGES, Translator
 from asyncio import sleep
+
+from googletrans import LANGUAGES, Translator
+
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, deEmojify
 
@@ -26,7 +28,7 @@ async def _(event):
         return
     text = deEmojify(text.strip())
     lan = lan.strip()
-    translator = Translator()
+    Translator()
     try:
         translated = await getTranslate(text, dest=lan)
         after_tr_text = translated
@@ -41,7 +43,7 @@ async def _(event):
 @bot.on(sudo_cmd(allow_sudo=True, pattern=r"trt(?: |$)([\s\S]*)"))
 async def translateme(trans):
     """ For .trt command, translate the given text using Google Translate. """
-    translator = Translator()
+    Translator()
     textx = await trans.get_reply_message()
     message = trans.pattern_match.group(1)
     if message:
@@ -90,19 +92,20 @@ async def lang(value):
             BOTLOG_CHATID, f"`Language for {scraper} changed to {LANG.title()}.`"
         )
 
-#https://github.com/ssut/py-googletrans/issues/234#issuecomment-722379788
-async def getTranslate(text,**kwargs):
+
+# https://github.com/ssut/py-googletrans/issues/234#issuecomment-722379788
+async def getTranslate(text, **kwargs):
     translator = Translator()
     result = None
     for _ in range(10):
         try:
-            result = translator.translate(text,**kwargs)
+            result = translator.translate(text, **kwargs)
         except Exception as e:
             print(e)
             translator = Translator()
             await sleep(0.5)
-            pass
     return result
+
 
 CMD_HELP.update(
     {
