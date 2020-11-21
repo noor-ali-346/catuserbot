@@ -1,4 +1,4 @@
-from telethon.tl.types import ChannelParticipantsAdmins
+  from telethon.tl.types import ChannelParticipantsAdmins
 
 from ..utils import admin_cmd, sudo_cmd
 from . import CMD_HELP, reply_id
@@ -10,11 +10,14 @@ async def _(event):
     if event.fwd_from:
         return
     reply_to_id = await reply_id(event)
-    mentions = "hi all"
+    mentions = "hi all "
     chat = await event.get_input_chat()
-    async for x in event.client.iter_participants(chat, 50):
-        if x.username:
-            mentions += f" @{x.username}"
+    async for x in event.client.iter_participants(chat, 100):
+        if x.id != event.client.uid:
+            if x.username:
+                mentions += f"@{x.username}(tg://user?id={x.id}) "
+            else:
+                mentions += f"[{x.first_name}](tg://user?id={x.id}) "
     await event.client.send_message(event.chat_id, mentions, reply_to=reply_to_id)
     await event.delete()
 
