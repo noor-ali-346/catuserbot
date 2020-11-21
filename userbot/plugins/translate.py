@@ -1,5 +1,5 @@
 from googletrans import LANGUAGES, Translator
-
+from asyncio import sleep
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, deEmojify
 
@@ -28,8 +28,8 @@ async def _(event):
     lan = lan.strip()
     translator = Translator()
     try:
-        translated = translator.translate(text, dest=lan)
-        after_tr_text = translated.text
+        translated = await getTranslate(text, dest=lan)
+        after_tr_text = translated
         output_str = f"**TRANSLATED from {LANGUAGES[translated.src].title()} to {LANGUAGES[lan].title()}**\
                 \n`{after_tr_text}`"
         await edit_or_reply(event, output_str)
@@ -52,7 +52,7 @@ async def translateme(trans):
         await edit_or_reply(trans, "`Give a text or reply to a message to translate!`")
         return
     try:
-        reply_text = translator.translate(deEmojify(message), dest=TRT_LANG)
+        reply_text = await getTranslate(deEmojify(message), dest=TRT_LANG)
     except ValueError:
         await edit_delete(trans, "`Invalid destination language.`", time=5)
         return
@@ -90,6 +90,19 @@ async def lang(value):
             BOTLOG_CHATID, f"`Language for {scraper} changed to {LANG.title()}.`"
         )
 
+#https://github.com/ssut/py-googletrans/issues/234#issuecomment-722379788
+async def getTranslate(text,**kwargs):
+    translator = Translator()
+    result = None
+    for _ in range(10):
+        try:
+            result = translator.translate(text,**kwargs)
+        except Exception as e:
+            print(e)
+            translator = Translator()
+            await sleep(0.5)
+            pass
+    return result
 
 CMD_HELP.update(
     {
