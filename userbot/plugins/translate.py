@@ -31,7 +31,7 @@ async def _(event):
     Translator()
     try:
         translated = await getTranslate(text, dest=lan)
-        after_tr_text = translated
+        after_tr_text = translated.text
         output_str = f"**TRANSLATED from {LANGUAGES[translated.src].title()} to {LANGUAGES[lan].title()}**\
                 \n`{after_tr_text}`"
         await edit_or_reply(event, output_str)
