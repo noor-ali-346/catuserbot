@@ -13,7 +13,7 @@ NEWPM = None
 COUNT = 0
 
 
-@bot.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
+@bot.on(admin_cmd(incoming=True, func=lambda e: e.is_private))
 async def monito_p_m_s(event):
     global RECENT_USER
     global NEWPM
@@ -50,7 +50,7 @@ async def monito_p_m_s(event):
                 LOGS.warn(str(e))
 
 
-@bot.on(events.NewMessage(incoming=True, func=lambda e: e.mentioned))
+@bot.on(admin_cmd(incoming=True, func=lambda e: e.mentioned))
 async def log_tagged_messages(event):
     hmm = await event.get_chat()
     if no_log_pms_sql.is_approved(hmm.id):
@@ -121,13 +121,12 @@ async def set_no_log_p_m(event):
 
 CMD_HELP.update(
     {
-        "log_chats": "**Plugin : **`log_chats`\
-        \n\n**Syntax : **`.save` :\
-        \n**Function : ** saves tagged message in private group .\
-        \n\n**Syntax : **`.log`:\
-        \n**Function : **By default will log all private chat messages if you use .nolog and want to log again then you need to use this\
-        \n\n**Syntax : **`.nolog`:\
-        \n**Function : **stops logging from a private chat \
-        \n\n**Note : **Currently these resets after restart, will try to add database soon so wont reset after restart"
+        "log_chats": "**Plugin : **`logchats`\
+        \n\n  •  **Syntax : **`.save` :\
+        \n  •  **Function : **__Saves tagged message in private group .__\
+        \n\n  •  **Syntax : **`.log`:\
+        \n  •  **Function : **__By default will log all private chat messages if you use .nolog and want to log again then you need to use this__\
+        \n\n  •  **Syntax : **`.nolog`:\
+        \n  •  **Function : **__Stops logging from a private chat or group where you used__"
     }
 )
