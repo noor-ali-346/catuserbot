@@ -1,15 +1,7 @@
-import asyncio
 import random
-import re
-
-import requests
-from cowpy import cow
-from telethon import functions, types
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import ChannelParticipantsAdmins, MessageEntityMentionName
 
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
-from . import ALIVE_NAME, BOTLOG, BOTLOG_CHATID, CMD_HELP, catmemes
+from . import ALIVE_NAME, CMD_HELP, catmemes
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
@@ -123,8 +115,10 @@ async def _(event):
     mentions = "**telethon.errors.rpcerrorlist.AuthKeyDuplicatedError: The authorization key (session file) was used under two different IP addresses simultaneously, and can no longer be used. Use the same session exclusively, or use different sessions (caused by GetMessagesRequest)**"
     await event.edit(mentions)
 
-CMD_HELP.update({
-"memestext":"**Plugin : **`memestext`\
+
+CMD_HELP.update(
+    {
+        "memestext": "**Plugin : **`memestext`\
         \n\n  •  **Syntax :** `.congo`\
         \n  •  **Function : **Congratulate the people.\
         \n\n  •  **Syntax :** `.shg`\
@@ -150,4 +144,5 @@ CMD_HELP.update({
         \n\n  •  **Syntax :** `.session`\
         \n  •  **Function : **telethon session error code(fun)\
         "
-        })
+    }
+)
