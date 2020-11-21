@@ -16,8 +16,6 @@ async def _(event):
         chat, filter=ChannelParticipantsRecent, limit=50
     ):
         if x.id != event.client.uid:
-            try:
-                x = await event.client
             if x.username:
                 mentions += htmlmentionuser(f"@{x.username}", f"{x.id}") + " "
             else:
