@@ -12,7 +12,9 @@ async def _(event):
     reply_to_id = await reply_id(event)
     mentions = "hi all "
     chat = await event.get_input_chat()
-    async for x in event.client.iter_participants(chat, filter=ChannelParticipantsRecent):
+    async for x in event.client.iter_participants(
+        chat, filter=ChannelParticipantsRecent
+    ):
         if x.id != event.client.uid:
             if x.username:
                 mentions += f"[@{x.username}](tg://user?id={x.id}) "
