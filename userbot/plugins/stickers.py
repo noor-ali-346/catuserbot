@@ -15,9 +15,12 @@ import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from telethon.tl.functions.messages import GetStickerSetRequest
-from telethon.tl.types import (DocumentAttributeFilename,
-                               DocumentAttributeSticker, InputStickerSetID,
-                               MessageMediaPhoto)
+from telethon.tl.types import (
+    DocumentAttributeFilename,
+    DocumentAttributeSticker,
+    InputStickerSetID,
+    MessageMediaPhoto,
+)
 
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd

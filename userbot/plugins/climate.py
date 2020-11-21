@@ -28,6 +28,7 @@ DEFCITY = "Delhi"
 # ====================
 OWM_API = Config.OPEN_WEATHER_MAP_APPID
 
+
 async def get_tz(con):
     # Get time zone of the given country. Credits: @aragon12 and @zakaryan2004.
     for c_code in c_n:

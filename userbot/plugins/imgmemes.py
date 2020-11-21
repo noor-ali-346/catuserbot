@@ -9,8 +9,17 @@ import re
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
-from . import (CMD_HELP, changemymind, deEmojify, fakegs, kannagen, moditweet,
-               reply_id, trumptweet, tweets)
+from . import (
+    CMD_HELP,
+    changemymind,
+    deEmojify,
+    fakegs,
+    kannagen,
+    moditweet,
+    reply_id,
+    trumptweet,
+    tweets,
+)
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="fakegs(?: |$)(.*)", command="fakegs"))

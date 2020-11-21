@@ -3,9 +3,11 @@ from telethon import events
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 from . import BOTLOG_CHATID, CMD_HELP, bot
 from .sql_helper import pmpermit_sql as pmpermit_sql
-from .sql_helper.welcomesql import (addwelcome_setting,
-                                    getcurrent_welcome_settings,
-                                    rmwelcome_setting)
+from .sql_helper.welcomesql import (
+    addwelcome_setting,
+    getcurrent_welcome_settings,
+    rmwelcome_setting,
+)
 
 
 @bot.on(events.ChatAction)

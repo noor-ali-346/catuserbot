@@ -1,9 +1,9 @@
-#ported from uniborg thanks to @s_n_a_p_s , @r4v4n4 ,  @spechide and @PhycoNinja13b
+# ported from uniborg thanks to @s_n_a_p_s , @r4v4n4 ,  @spechide and @PhycoNinja13b
 #:::::Credit Time::::::
-#1) Coded By: @s_n_a_p_s
-#2) Ported By: @r4v4n4 (Noodz Lober)
-#3) End Game Help By: @spechide
-#4) Better Colour Profile Pic By @PhycoNinja13b
+# 1) Coded By: @s_n_a_p_s
+# 2) Ported By: @r4v4n4 (Noodz Lober)
+# 3) End Game Help By: @spechide
+# 4) Better Colour Profile Pic By @PhycoNinja13b
 import asyncio
 import base64
 import os
@@ -37,6 +37,7 @@ AUTOBIOSTART = False
 AUTONAMESTART = False
 DIGITALPICSTART = False
 
+
 @bot.on(admin_cmd(pattern="autopic ?(.*)"))
 async def autopic(event):
     if event.fwd_from:
@@ -59,11 +60,11 @@ async def autopic(event):
     else:
         input_str = 0
     if AUTOPICSTART:
-        return await edit_delete(event , f"`Autopic is already enabled`")
+        return await edit_delete(event, f"`Autopic is already enabled`")
     else:
         AUTOPICSTART = True
     counter = input_str
-    await edit_delete(event , f"`Autopic has been started by my Master`")
+    await edit_delete(event, f"`Autopic has been started by my Master`")
     while AUTOPICSTART:
         shutil.copy(downloaded_file_name, photo)
         im = Image.open(photo)
@@ -74,11 +75,9 @@ async def autopic(event):
         fnt = ImageFont.truetype(FONT_FILE_TO_USE, 30)
         drawn_text.text((150, 250), current_time, font=fnt, fill=(124, 252, 0))
         img.save(photo)
-        file = await event.client.upload_file(photo)  
+        file = await event.client.upload_file(photo)
         try:
-            await event.client(
-                functions.photos.UploadProfilePhotoRequest(file)  
-            )
+            await event.client(functions.photos.UploadProfilePhotoRequest(file))
             os.remove(photo)
             counter -= input_str
             await asyncio.sleep(CHANGE_TIME)
@@ -101,19 +100,19 @@ async def main(event):
     downloader = SmartDL(cat, downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
     if DIGITALPICSTART:
-        return await edit_delete(event , f"`Digitalpfp is already enabled`")
+        return await edit_delete(event, f"`Digitalpfp is already enabled`")
     else:
         DIGITALPICSTART = True
-    await edit_delete(event , f"`digitalpfp has been started by my Master`")
+    await edit_delete(event, f"`digitalpfp has been started by my Master`")
     while DIGITALPICSTART:
         shutil.copy(downloaded_file_name, poto)
         Image.open(poto)
         current_time = datetime.now().strftime("%H:%M")
         img = Image.open(poto)
         drawn_text = ImageDraw.Draw(img)
-        cat = str(
-            base64.b64decode("dXNlcmJvdC9oZWxwZXJzL3N0eWxlcy9kaWdpdGFsLnR0Zg==")
-        )[2:36]
+        cat = str(base64.b64decode("dXNlcmJvdC9oZWxwZXJzL3N0eWxlcy9kaWdpdGFsLnR0Zg=="))[
+            2:36
+        ]
         fnt = ImageFont.truetype(cat, 200)
         drawn_text.text((350, 100), current_time, font=fnt, fill=(124, 252, 0))
         img.save(poto)
@@ -142,10 +141,12 @@ async def autopic(event):
     while not downloader.isFinished():
         pass
     if BLOOMSTART:
-        return await edit_delete(event , f"`Bloom is already enabled`")
+        return await edit_delete(event, f"`Bloom is already enabled`")
     else:
         BLOOMSTART = True
-    await edit_delete(event , "`Bloom colour profile pic have been enabled by my master`")
+    await edit_delete(
+        event, "`Bloom colour profile pic have been enabled by my master`"
+    )
     while BLOOMSTART:
         # RIP Danger zone Here no editing here plox
         R = random.randint(0, 256)
@@ -166,65 +167,55 @@ async def autopic(event):
         drawn_text.text((95, 250), current_time, font=fnt, fill=(FR, FG, FB))
         drawn_text.text((95, 250), "      😈", font=ofnt, fill=(FR, FG, FB))
         img.save(photo)
-        file = await event.client.upload_file(photo)  
+        file = await event.client.upload_file(photo)
         try:
-            await event.client(
-                functions.photos.UploadProfilePhotoRequest(file)  
-            )
+            await event.client(functions.photos.UploadProfilePhotoRequest(file))
             os.remove(photo)
             await asyncio.sleep(CHANGE_TIME)
         except BaseException:
             return
 
 
-@bot.on(admin_cmd(pattern="autoname$"))  
+@bot.on(admin_cmd(pattern="autoname$"))
 async def _(event):
     if event.fwd_from:
         return
     global AUTONAMESTART
     if AUTONAMESTART:
-        return await edit_delete(event , f"`Autoname is already enabled`")
+        return await edit_delete(event, f"`Autoname is already enabled`")
     else:
         AUTONAMESTART = True
-    await edit_delete(event , "`Auto Name has been started by my Master `")
+    await edit_delete(event, "`Auto Name has been started by my Master `")
     while AUTONAMESTART:
         DM = time.strftime("%d-%m-%y")
         HM = time.strftime("%H:%M")
         name = f"⌚️ {HM}||›  {DEFAULTUSER} ‹||📅 {DM}"
         logger.info(name)
         try:
-            await event.client(
-                functions.account.UpdateProfileRequest(  
-                    first_name=name
-                )
-            )
+            await event.client(functions.account.UpdateProfileRequest(first_name=name))
         except FloodWaitError as ex:
             logger.warning(str(e))
             await asyncio.sleep(ex.seconds)
         await asyncio.sleep(CHANGE_TIME)
 
 
-@bot.on(admin_cmd(pattern="autobio$"))  
+@bot.on(admin_cmd(pattern="autobio$"))
 async def _(event):
     global AUTOBIOSTART
     if event.fwd_from:
         return
     if AUTOBIOSTART:
-        return await edit_delete(event , f"`Autobio is already enabled`")
+        return await edit_delete(event, f"`Autobio is already enabled`")
     else:
         AUTOBIOSTART = True
-    await edit_delete(event , "`Autobio has been started by my Master`")
+    await edit_delete(event, "`Autobio has been started by my Master`")
     while AUTOBIOSTART:
         DMY = time.strftime("%d.%m.%Y")
         HM = time.strftime("%H:%M:%S")
         bio = f"📅 {DMY} | {DEFAULTUSERBIO} | ⌚️ {HM}"
         logger.info(bio)
         try:
-            await event.client(
-                functions.account.UpdateProfileRequest(  
-                    about=bio
-                )
-            )
+            await event.client(functions.account.UpdateProfileRequest(about=bio))
         except FloodWaitError as ex:
             logger.warning(str(e))
             await asyncio.sleep(ex.seconds)
@@ -241,38 +232,38 @@ async def _(event):
     global AUTONAMESTART
     global AUTOBIOSTART
     input_str = event.pattern_match.group(1)
-    if input_str=="autopic":
+    if input_str == "autopic":
         if AUTOPICSTART:
             AUTOPICSTART = False
-            await edit_delete(event , "`Autopic has been stopped now`")
+            await edit_delete(event, "`Autopic has been stopped now`")
         else:
-            await edit_delete(event , "`Autopic haven't enabled`")
-    elif input_str=="digitalpfp":
+            await edit_delete(event, "`Autopic haven't enabled`")
+    elif input_str == "digitalpfp":
         if DIGITALPICSTART:
             DIGITALPICSTART = False
-            await edit_delete(event , "`Digital profile pic has been stopped now`")
+            await edit_delete(event, "`Digital profile pic has been stopped now`")
         else:
-            await edit_delete(event , "`Digital profile pic haven't enabled`")
-    elif input_str=="bloom":
+            await edit_delete(event, "`Digital profile pic haven't enabled`")
+    elif input_str == "bloom":
         if BLOOMSTART:
             BLOOMSTART = False
-            await edit_delete(event , "`Bloom has been stopped now`")
+            await edit_delete(event, "`Bloom has been stopped now`")
         else:
-            await edit_delete(event , "`Bloom haven't enabled`")
-    elif input_str=="autoname":
+            await edit_delete(event, "`Bloom haven't enabled`")
+    elif input_str == "autoname":
         if AUTONAMESTART:
             AUTONAMESTART = False
-            await edit_delete(event , "`Autoname has been stopped now`")
+            await edit_delete(event, "`Autoname has been stopped now`")
         else:
-            await edit_delete(event , "`Autoname haven't enabled`")
-    elif input_str=="autobio":
+            await edit_delete(event, "`Autoname haven't enabled`")
+    elif input_str == "autobio":
         if AUTOBIOSTART:
             AUTOBIOSTART = False
-            await edit_delete(event , "`Autobio has been stopped now`")
+            await edit_delete(event, "`Autobio has been stopped now`")
         else:
-            await edit_delete(event , "`Autobio haven't enabled`")
+            await edit_delete(event, "`Autobio haven't enabled`")
     else:
-        await edit_delete(event , "`What should i end ?..`")
+        await edit_delete(event, "`What should i end ?..`")
 
 
 CMD_HELP.update(

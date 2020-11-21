@@ -1,4 +1,4 @@
-#ported from uniborg by @spechide
+# ported from uniborg by @spechide
 
 import asyncio
 import os
@@ -21,9 +21,9 @@ async def ff_mpeg_trim_cmd(event):
         if reply_message:
             start = datetime.now()
             media = media_type(reply_message)
-            if media not in ["Video", "Audio" , "Voice", "Round Video"]:
-                return await edit_delete(event , "`Only media files are supported`", 5)
-            catevent = await edit_or_reply(event,"`Saving the file...`")
+            if media not in ["Video", "Audio", "Voice", "Round Video"]:
+                return await edit_delete(event, "`Only media files are supported`", 5)
+            catevent = await edit_or_reply(event, "`Saving the file...`")
             try:
                 c_time = time.time()
                 downloaded_file_name = await event.client.download_media(
@@ -38,7 +38,9 @@ async def ff_mpeg_trim_cmd(event):
             else:
                 end = datetime.now()
                 ms = (end - start).seconds
-                await catevent.edit(f"Saved file to `{downloaded_file_name}` in `{ms}` seconds.")
+                await catevent.edit(
+                    f"Saved file to `{downloaded_file_name}` in `{ms}` seconds."
+                )
         else:
             await edit_delete(event, "`Reply to a any media file`")
     else:
@@ -60,7 +62,7 @@ async def ff_mpeg_trim_cmd(event):
         )
         return
     reply_to_id = await reply_id(event)
-    catevent = await edit_or_reply(event,"`Triming the media......`")
+    catevent = await edit_or_reply(event, "`Triming the media......`")
     current_message_text = event.raw_text
     cmt = current_message_text.split(" ")
     start = datetime.now()
@@ -74,7 +76,9 @@ async def ff_mpeg_trim_cmd(event):
             end_time,
         )
         if o is None:
-            return await edit_delete(catevent,f"**Error : **`Can't complete the process`")
+            return await edit_delete(
+                catevent, f"**Error : **`Can't complete the process`"
+            )
         try:
             c_time = time.time()
             await event.client.send_file(
@@ -91,7 +95,7 @@ async def ff_mpeg_trim_cmd(event):
             )
             os.remove(o)
         except Exception as e:
-            return await edit_delete(catevent,f"**Error : **`{e}`")
+            return await edit_delete(catevent, f"**Error : **`{e}`")
     elif len(cmt) == 2:
         # output should be image
         cmd, start_time = cmt
@@ -99,7 +103,9 @@ async def ff_mpeg_trim_cmd(event):
             FF_MPEG_DOWN_LOAD_MEDIA_PATH, Config.TMP_DOWNLOAD_DIRECTORY, start_time
         )
         if o is None:
-            return await edit_delete(catevent,f"**Error : **`Can't complete the process`")
+            return await edit_delete(
+                catevent, f"**Error : **`Can't complete the process`"
+            )
         try:
             c_time = time.time()
             await event.client.send_file(
@@ -116,13 +122,13 @@ async def ff_mpeg_trim_cmd(event):
             )
             os.remove(o)
         except Exception as e:
-            return await edit_delete(catevent,f"**Error : **`{e}`")
+            return await edit_delete(catevent, f"**Error : **`{e}`")
     else:
-        await edit_delete(catevent , "RTFM")
+        await edit_delete(catevent, "RTFM")
         return
     end = datetime.now()
     ms = (end - start).seconds
-    await edit_delete(catevent , f"`Completed Process in {ms} seconds`",3)
+    await edit_delete(catevent, f"`Completed Process in {ms} seconds`", 3)
 
 
 @bot.on(admin_cmd(pattern="atrim"))
@@ -137,11 +143,13 @@ async def ff_mpeg_trim_cmd(event):
         )
         return
     reply_to_id = await reply_id(event)
-    catevent = await edit_or_reply(event,"`Triming the media...........`")
+    catevent = await edit_or_reply(event, "`Triming the media...........`")
     current_message_text = event.raw_text
     cmt = current_message_text.split(" ")
     start = datetime.now()
-    out_put_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY , f"{str(round(time.time()))}.mp3")
+    out_put_file_name = os.path.join(
+        Config.TMP_DOWNLOAD_DIRECTORY, f"{str(round(time.time()))}.mp3"
+    )
     if len(cmt) == 3:
         # output should be audio
         cmd, start_time, end_time = cmt
@@ -153,7 +161,9 @@ async def ff_mpeg_trim_cmd(event):
             out_put_file_name,
         )
         if o is None:
-            return await edit_delete(catevent,f"**Error : **`Can't complete the process`")
+            return await edit_delete(
+                catevent, f"**Error : **`Can't complete the process`"
+            )
         try:
             c_time = time.time()
             await event.client.send_file(
@@ -170,13 +180,14 @@ async def ff_mpeg_trim_cmd(event):
             )
             os.remove(o)
         except Exception as e:
-            return await edit_delete(catevent,f"**Error : **`{e}`")
+            return await edit_delete(catevent, f"**Error : **`{e}`")
     else:
-        await edit_delete(catevent , "RTFM")
+        await edit_delete(catevent, "RTFM")
         return
     end = datetime.now()
     ms = (end - start).seconds
-    await edit_delete(catevent , f"`Completed Process in {ms} seconds`",3)
+    await edit_delete(catevent, f"`Completed Process in {ms} seconds`", 3)
+
 
 @bot.on(admin_cmd(pattern="ffmpegclear$"))
 @bot.on(sudo_cmd(pattern="ffmpegclear$", allow_sudo=True))
@@ -187,13 +198,15 @@ async def ff_mpeg_trim_cmd(event):
         await edit_delete(event, "`There is no media saved in bot for triming`")
     else:
         os.remove(FF_MPEG_DOWN_LOAD_MEDIA_PATH)
-        await edit_delete(event, "`The media saved in bot for triming is deleted now . you can save now new one `")
-        
+        await edit_delete(
+            event,
+            "`The media saved in bot for triming is deleted now . you can save now new one `",
+        )
 
-    
+
 async def take_screen_shot(video_file, output_directory, ttl):
     # https://stackoverflow.com/a/13891070/4723940
-    out_put_file_name = os.path.join(output_directory , f"{str(time.time())}.jpg")
+    out_put_file_name = os.path.join(output_directory, f"{str(time.time())}.jpg")
     file_genertor_command = [
         "ffmpeg",
         "-ss",
@@ -202,7 +215,7 @@ async def take_screen_shot(video_file, output_directory, ttl):
         video_file,
         "-vframes",
         "1",
-        out_put_file_name
+        out_put_file_name,
     ]
     # width = "90"
     process = await asyncio.create_subprocess_exec(
@@ -217,12 +230,17 @@ async def take_screen_shot(video_file, output_directory, ttl):
         return out_put_file_name
     return None
 
+
 # https://github.com/Nekmo/telegram-upload/blob/master/telegram_upload/video.py#L26
 
 
-async def cult_small_video(video_file, output_directory, start_time, end_time,out_put_file_name=None):
+async def cult_small_video(
+    video_file, output_directory, start_time, end_time, out_put_file_name=None
+):
     # https://stackoverflow.com/a/13891070/4723940
-    out_put_file_name = out_put_file_name or os.path.join(output_directory , f"{str(round(time.time()))}.mp4")
+    out_put_file_name = out_put_file_name or os.path.join(
+        output_directory, f"{str(round(time.time()))}.mp4"
+    )
     file_genertor_command = [
         "ffmpeg",
         "-i",
@@ -235,7 +253,7 @@ async def cult_small_video(video_file, output_directory, start_time, end_time,ou
         "1",
         "-strict",
         "-2",
-        out_put_file_name
+        out_put_file_name,
     ]
     process = await asyncio.create_subprocess_exec(
         *file_genertor_command,
@@ -249,8 +267,10 @@ async def cult_small_video(video_file, output_directory, start_time, end_time,ou
         return out_put_file_name
     return None
 
-CMD_HELP.update({
-    "ffmpeg":"**Plugin : **`ffmpeg`\
+
+CMD_HELP.update(
+    {
+        "ffmpeg": "**Plugin : **`ffmpeg`\
     \n\n  •  **Syntax : **`.ffmpegsave`\
     \n  •  **Function : **__Saves the media file in bot to trim mutliple times__\
     \n\n  •  **Syntax : **`.vtrim time`\
@@ -262,4 +282,5 @@ CMD_HELP.update({
     \n\n  •  **Syntax : **`.ffmpegclear`\
     \n  •  **Function : **__Deletes the saved media so you can save new one__\
     "
-})    
+    }
+)

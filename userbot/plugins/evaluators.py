@@ -17,7 +17,7 @@ async def _(event):
         return
     cmd = "".join(event.text.split(maxsplit=1)[1:])
     if not cmd:
-        return await edit_delete(event,"`What should i execute?..`")
+        return await edit_delete(event, "`What should i execute?..`")
     catevent = await edit_or_reply(event, "`Executing.....`")
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
@@ -33,8 +33,13 @@ async def _(event):
     if uid == 0:
         cresult = f"`{curruser}:~#` `{cmd}`\n`{result}`"
     else:
-        cresult = f"`{curruser}:~$` `{cmd}`\n`{result}`" 
-    await edit_or_reply(catevent ,text=cresult, aslink=True, linktext=f"**•  Exec : **\n`{cmd}` \n\n**•  Result : **\n")
+        cresult = f"`{curruser}:~$` `{cmd}`\n`{result}`"
+    await edit_or_reply(
+        catevent,
+        text=cresult,
+        aslink=True,
+        linktext=f"**•  Exec : **\n`{cmd}` \n\n**•  Result : **\n",
+    )
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -49,7 +54,7 @@ async def _(event):
         return
     cmd = "".join(event.text.split(maxsplit=1)[1:])
     if not cmd:
-        return await edit_delete(event,"`What should i run ?..`")
+        return await edit_delete(event, "`What should i run ?..`")
     catevent = await edit_or_reply(event, "`Running ...`")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
@@ -74,7 +79,12 @@ async def _(event):
     else:
         evaluation = "Success"
     final_output = f"**•  Eval : **\n`{cmd}` \n\n**•  Result : **\n`{evaluation}` \n"
-    await edit_or_reply(catevent ,text=final_output, aslink=True, linktext=f"**•  Eval : **\n`{cmd}` \n\n**•  Result : **\n")
+    await edit_or_reply(
+        catevent,
+        text=final_output,
+        aslink=True,
+        linktext=f"**•  Eval : **\n`{cmd}` \n\n**•  Result : **\n",
+    )
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -86,8 +96,14 @@ async def aexec(code, smessatatus):
     message = event = smessatatus
     p = lambda _x: print(yaml_format(_x))
     reply = await event.get_reply_message()
-    exec(f'async def __aexec(message, event , reply, client, p, chat): ' + ''.join(f'\n {l}' for l in code.split('\n')))
-    return await locals()['__aexec'](message, event ,reply, message.client, p,message.chat_id)
+    exec(
+        f"async def __aexec(message, event , reply, client, p, chat): "
+        + "".join(f"\n {l}" for l in code.split("\n"))
+    )
+    return await locals()["__aexec"](
+        message, event, reply, message.client, p, message.chat_id
+    )
+
 
 CMD_HELP.update(
     {

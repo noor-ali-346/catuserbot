@@ -1,12 +1,14 @@
 # ported from paperplaneExtended by avinashreddy3108 for media support
 import re
 
-from telethon import events
-
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
-from . import BOTLOG_CHATID, CMD_HELP,BOTLOG
-from .sql_helper.filter_sql import (add_filter, get_filters,
-                                    remove_all_filters, remove_filter)
+from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
+from .sql_helper.filter_sql import (
+    add_filter,
+    get_filters,
+    remove_all_filters,
+    remove_filter,
+)
 
 
 @bot.on(admin_cmd(incoming=True))
@@ -85,7 +87,12 @@ async def on_snip_list(event):
         if OUT_STR == "There are no filters in this chat.":
             OUT_STR = "Active filters in this chat:\n"
         OUT_STR += "👉 `{}`\n".format(filt.keyword)
-    await edit_or_reply(event, OUT_STR,caption="Available Filters in the Current Chat",file_name="filters.text")
+    await edit_or_reply(
+        event,
+        OUT_STR,
+        caption="Available Filters in the Current Chat",
+        file_name="filters.text",
+    )
 
 
 @bot.on(admin_cmd(pattern="stop (.*)"))

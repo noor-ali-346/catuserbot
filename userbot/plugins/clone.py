@@ -60,10 +60,8 @@ async def _(event):
     await event.client(functions.account.UpdateProfileRequest(first_name=first_name))
     await event.client(functions.account.UpdateProfileRequest(last_name=last_name))
     await event.client(functions.account.UpdateProfileRequest(about=user_bio))
-    pfile = await event.client.upload_file(profile_pic) 
-    await event.client(
-        functions.photos.UploadProfilePhotoRequest(pfile) 
-    )
+    pfile = await event.client.upload_file(profile_pic)
+    await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
     await event.delete()
     await event.client.send_message(
         event.chat_id, "**LET US BE AS ONE**", reply_to=reply_message

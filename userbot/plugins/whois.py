@@ -17,7 +17,8 @@ from telethon.utils import get_input_location
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 from . import CMD_HELP, LOGS, spamwatch
 
-TMP_DOWNLOAD_DIRECTORY= Config.TMP_DOWNLOAD_DIRECTORY
+TMP_DOWNLOAD_DIRECTORY = Config.TMP_DOWNLOAD_DIRECTORY
+
 
 @bot.on(admin_cmd(pattern="userinfo(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="userinfo(?: |$)(.*)", allow_sudo=True))

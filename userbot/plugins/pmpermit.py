@@ -3,8 +3,7 @@ import asyncio
 from telethon import events, functions
 
 from ..utils import admin_cmd
-from . import (ALIVE_NAME, CMD_HELP, PM_START, PMMENU, check,
-               get_user_from_event)
+from . import ALIVE_NAME, CMD_HELP, PM_START, PMMENU, check, get_user_from_event
 from .sql_helper import pmpermit_sql as pmpermit_sql
 
 PM_WARNS = {}
@@ -126,9 +125,13 @@ if Config.PRIVATE_GROUP_ID is not None:
                     )
         else:
             APPROVED_PMs = "no Approved PMs (yet)"
-        await edit_or_reply(event ,APPROVED_PMs,file_name="approvedpms.txt", caption="`Current Approved PMs`")
+        await edit_or_reply(
+            event,
+            APPROVED_PMs,
+            file_name="approvedpms.txt",
+            caption="`Current Approved PMs`",
+        )
 
-    
     @bot.on(events.NewMessage(incoming=True))
     async def on_new_private_message(event):
         if event.sender_id == event.client.uid:
@@ -143,7 +146,7 @@ if Config.PRIVATE_GROUP_ID is not None:
         else:
             sender = await event.get_chat()
             CACHE[chat_id] = sender
-        if sender.bot or sender.verified: 
+        if sender.bot or sender.verified:
             return
         if PMMENU:
             if event.raw_text == "/start":
@@ -155,9 +158,9 @@ if Config.PRIVATE_GROUP_ID is not None:
             if chat_id in PM_START:
                 return
         if not pmpermit_sql.is_approved(chat_id):
-            await do_pm_permit_action(chat_id, event,sender)
+            await do_pm_permit_action(chat_id, event, sender)
 
-    async def do_pm_permit_action(chat_id, event,sender):
+    async def do_pm_permit_action(chat_id, event, sender):
         if chat_id not in PM_WARNS:
             PM_WARNS.update({chat_id: 0})
         if PM_WARNS[chat_id] == Config.MAX_FLOOD_IN_P_M_s:
@@ -180,7 +183,7 @@ if Config.PRIVATE_GROUP_ID is not None:
                 return
             except BaseException:
                 return
-        me =  await event.client.get_me()
+        me = await event.client.get_me()
         mention = f"[{sender.first_name}](tg://user?id={sender.id})"
         my_mention = f"[{me.first_name}](tg://user?id={me.id})"
         first = sender.first_name
@@ -195,10 +198,19 @@ if Config.PRIVATE_GROUP_ID is not None:
         if PMMENU:
             if Config.CUSTOM_PMPERMIT_TEXT:
                 USER_BOT_NO_WARN = (
-                    Config.CUSTOM_PMPERMIT_TEXT.format(mention=mention,first=first,last=last,fullname=fullname,
-                                                        username=username,userid=userid,my_first=my_first,
-                                                        my_last=my_last,my_fullname=my_fullname,my_username=my_username,
-                                                        my_mention=my_mention,)
+                    Config.CUSTOM_PMPERMIT_TEXT.format(
+                        mention=mention,
+                        first=first,
+                        last=last,
+                        fullname=fullname,
+                        username=username,
+                        userid=userid,
+                        my_first=my_first,
+                        my_last=my_last,
+                        my_fullname=my_fullname,
+                        my_username=my_username,
+                        my_mention=my_mention,
+                    )
                     + "\n\n"
                     + "**Send** `/start` ** so that my master can decide why you're here.**"
                 )
@@ -210,10 +222,19 @@ if Config.PRIVATE_GROUP_ID is not None:
                 )
         else:
             if Config.CUSTOM_PMPERMIT_TEXT:
-                USER_BOT_NO_WARN = Config.CUSTOM_PMPERMIT_TEXT.format(mention=mention,first=first,last=last,fullname=fullname,
-                                                        username=username,userid=userid,my_first=my_first,
-                                                        my_last=my_last,my_fullname=my_fullname,my_username=my_username,
-                                                        my_mention=my_mention,)
+                USER_BOT_NO_WARN = Config.CUSTOM_PMPERMIT_TEXT.format(
+                    mention=mention,
+                    first=first,
+                    last=last,
+                    fullname=fullname,
+                    username=username,
+                    userid=userid,
+                    my_first=my_first,
+                    my_last=my_last,
+                    my_fullname=my_fullname,
+                    my_username=my_username,
+                    my_mention=my_mention,
+                )
             else:
                 USER_BOT_NO_WARN = (
                     f"My master {DEFAULTUSER} haven't approved you yet. Don't spam his inbox "
@@ -227,7 +248,6 @@ if Config.PRIVATE_GROUP_ID is not None:
         if chat_id in PREV_REPLY_MESSAGE:
             await PREV_REPLY_MESSAGE[chat_id].delete()
         PREV_REPLY_MESSAGE[chat_id] = r
-
 
 
 CMD_HELP.update(

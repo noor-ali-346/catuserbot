@@ -77,7 +77,7 @@ async def _(event):
 @bot.on(sudo_cmd(pattern=r"dump$", allow_sudo=True))
 async def _(message):
     if event.fwd_from:
-        return 
+        return
     try:
         obj = message.pattern_match.group(1)
         if len(obj) != 3:

@@ -17,7 +17,9 @@ catversion = "2.9.1"
 if Config.STRING_SESSION:
     session_name = str(Config.STRING_SESSION)
     if session_name.endswith("="):
-        bot = TelegramClient(StringSession(session_name), Config.APP_ID, Config.API_HASH)
+        bot = TelegramClient(
+            StringSession(session_name), Config.APP_ID, Config.API_HASH
+        )
     else:
         bot = TelegramClient(
             "TG_BOT_TOKEN", api_id=Config.APP_ID, api_hash=Config.API_HASH
@@ -48,7 +50,9 @@ if bool(ENV):
 
     # Check if the config was edited by using the already used Configiable.
     # Basically, its the 'virginity check' for the config file ;)
-    CONFIG_CHECK = os.environ.get("___________PLOX_______REMOVE_____THIS_____LINE__________", None)
+    CONFIG_CHECK = os.environ.get(
+        "___________PLOX_______REMOVE_____THIS_____LINE__________", None
+    )
     if CONFIG_CHECK:
         LOGS.info(
             "Please remove the line mentioned in the first hashtag from the config.env file"

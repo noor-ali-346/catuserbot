@@ -8,9 +8,9 @@ from telethon.tl.types import ChatBannedRights
 
 class Config((object)):
     LOGGER = True
-    # Default .alive name 
+    # Default .alive name
     ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
-    #for profile default name
+    # for profile default name
     AUTONAME = os.environ.get("AUTONAME", None)
     # Get this value from my.telegram.org! Please do not steal
     APP_ID = int(os.environ.get("APP_ID", 6))
@@ -129,7 +129,7 @@ class Config((object)):
     G_DRIVE_AUTH_TOKEN_DATA = os.environ.get("G_DRIVE_AUTH_TOKEN_DATA", None)
     G_DRIVE_DATA = os.environ.get("G_DRIVE_DATA", None)
     TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./downloads")
-    #for heroku plugin
+    # for heroku plugin
     HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
     # For transfer channel

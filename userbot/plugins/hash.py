@@ -58,13 +58,13 @@ async def endecrypt(event):
         else:
             reply = await event.get_reply_message()
             if not reply:
-                return await edit_delete(event , "`What should i encode`")
+                return await edit_delete(event, "`What should i encode`")
             mediatype = media_type(reply)
             if mediatype is None:
                 result = base64.b64encode(bytes(reply.text, "utf-8")).decode("utf-8")
                 result = f"**Shhh! It's Encoded : **\n`{result}`"
             else:
-                catevent = await edit_or_reply(event , "`Encoding ...`")
+                catevent = await edit_or_reply(event, "`Encoding ...`")
                 c_time = time.time()
                 downloaded_file_name = await event.client.download_media(
                     reply,
@@ -73,10 +73,12 @@ async def endecrypt(event):
                         progress(d, t, catevent, c_time, "trying to download")
                     ),
                 )
-                catevent = await edit_or_reply(event , "`Encoding ...`")
+                catevent = await edit_or_reply(event, "`Encoding ...`")
                 with open(downloaded_file_name, "rb") as image_file:
-                    result = base64.b64encode(image_file.read()).decode("utf-8")  
-        await edit_or_reply(catevent, result ,file_name="encodedfile.txt",caption = "It's Encoded")
+                    result = base64.b64encode(image_file.read()).decode("utf-8")
+        await edit_or_reply(
+            catevent, result, file_name="encodedfile.txt", caption="It's Encoded"
+        )
         os.remove(downloaded_file_name)
     else:
         lething = str(
