@@ -101,9 +101,8 @@ async def getTranslate(text, **kwargs):
         try:
             result = translator.translate(text, **kwargs)
         except Exception as e:
-            print(e)
             translator = Translator()
-            await sleep(0.5)
+            await sleep(0.3)
     return result
 
 
