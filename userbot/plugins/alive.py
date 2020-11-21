@@ -6,10 +6,10 @@ from telethon import version
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 from . import ALIVE_NAME, CMD_HELP, StartTime, catdef, catversion, mention, reply_id
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
+DEFAULTUSER = ALIVE_NAME or "cat"
 CAT_IMG = Config.ALIVE_PIC
 CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT or "✮ MY BOT IS RUNNING SUCCESFULLY ✮"
-EMOJI = str(Config.CUSTOM_ALIVE_EMOJI) if Config.CUSTOM_ALIVE_EMOJI else "  • "
+EMOJI = Config.CUSTOM_ALIVE_EMOJI) or "  • "
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="alive$"))
