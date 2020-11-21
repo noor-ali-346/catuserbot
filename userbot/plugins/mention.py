@@ -1,5 +1,6 @@
-from telethon.tl.types import ChannelParticipantsAdmins, ChannelParticipantsRecent
 from telethon.tl.functions.users import GetFullUserRequest
+from telethon.tl.types import ChannelParticipantsAdmins, ChannelParticipantsRecent
+
 from ..utils import admin_cmd, sudo_cmd
 from . import CMD_HELP, htmlmentionuser, reply_id
 
