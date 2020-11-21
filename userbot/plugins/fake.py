@@ -1,35 +1,49 @@
 import asyncio
-import logging
 from datetime import datetime
-
+from random import choice, getrandbits, randint
 from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.types import ChatAdminRights
 
 from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 from . import ALIVE_NAME, CMD_HELP
 
-logging.basicConfig(
-    format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
-)
-
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 
-@bot.on(admin_cmd(pattern="scam ?(.*)"))
-@bot.on(sudo_cmd(pattern="scam ?(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="scam(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern="scam(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
+    options = [
+        'typing', 'contact', 'game', 'location', 'voice', 'round', 'video',
+        'photo', 'document', 'cancel'
+    ]
     input_str = event.pattern_match.group(1)
-    action = "typing"
-    if input_str:
-        action = input_str
+    args = input_str.split()
+    if len(args) == 0:
+        scam_action = choice(options)
+        scam_time = randint(300, 360)
+    elif len(args) == 1:
+        try:
+            scam_action = str(args[0]).lower()
+            scam_time = randint(300, 360)
+        except ValueError:
+            scam_action = choice(options)
+            scam_time = int(args[0])
+    elif len(args) == 2:
+        scam_action = str(args[0]).lower()
+        scam_time = int(args[1])
+    else:
+        await edit_delete(event , "`Invalid Syntax !!`")
+        return
     try:
-        await event.delete()
+        if (scam_time > 0):
+            await event.delete()
+            async with event.client.action(event.chat_id, scam_action):
+                await sleep(scam_time)
     except BaseException:
-        pass
-    async with event.client.action(event.chat_id, action):
-        await asyncio.sleep(86400)  # type for 10 seconds
+        return
 
 
 @bot.on(admin_cmd(pattern="prankpromote ?(.*)"))
