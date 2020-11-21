@@ -11,7 +11,7 @@ NEWPM = None
 COUNT = 0
 
 
-@bot.on(admin_cmd(incoming=True, func=lambda e: e.is_private))
+@bot.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
 async def monito_p_m_s(event):
     global RECENT_USER
     global NEWPM
@@ -48,7 +48,7 @@ async def monito_p_m_s(event):
                 LOGS.warn(str(e))
 
 
-@bot.on(admin_cmd(incoming=True, func=lambda e: e.mentioned))
+@bot.on(events.NewMessage(incoming=True, func=lambda e: e.mentioned))
 async def log_tagged_messages(event):
     hmm = await event.get_chat()
     if no_log_pms_sql.is_approved(hmm.id):
