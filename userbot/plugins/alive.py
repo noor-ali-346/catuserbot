@@ -35,13 +35,13 @@ async def amireallyalive(alive):
     else:
         await edit_or_reply(
             alive,
-            f"**✮ MY BOT IS RUNNING SUCCESFULLY ✮**\n\n"
-            f"**✧ Database :** `{check_sgnirts}`\n"
-            f"**✧ Telethon Version :** `{version.__version__}\n`"
-            f"**✧ Catuserbot Version :** `{catversion}`\n"
-            f"**✧ Python Version :** `{python_version()}\n`"
-            f"**✧ Uptime :** `{uptime}\n`"
-            f"**✧ Master:** {mention}\n",
+            f"**{CUSTOM_ALIVE_TEXT}**\n\n"
+            f"**{EMOJI} Database :** `{check_sgnirts}`\n"
+            f"**{EMOJI} Telethon Version :** `{version.__version__}\n`"
+            f"**{EMOJI} Catuserbot Version :** `{catversion}`\n"
+            f"**{EMOJI} Python Version :** `{python_version()}\n`"
+            f"**{EMOJI} Uptime :** `{uptime}\n`"
+            f"**{EMOJI} Master:** {mention}\n",
         )
 
 
