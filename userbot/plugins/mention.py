@@ -15,7 +15,7 @@ async def _(event):
     async for x in event.client.iter_participants(chat, 100):
         if x.id != event.client.uid:
             if x.username:
-                mentions += f"@{x.username}(tg://user?id={x.id}) "
+                mentions += f"[@{x.username}](tg://user?id={x.id}) "
             else:
                 mentions += f"[{x.first_name}](tg://user?id={x.id}) "
     await event.client.send_message(event.chat_id, mentions, reply_to=reply_to_id)
