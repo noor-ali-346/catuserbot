@@ -26,7 +26,6 @@ async def _(event):
         "video",
         "photo",
         "document",
-        "cancel",
     ]
     input_str = event.pattern_match.group(1)
     args = input_str.split()
@@ -49,6 +48,8 @@ async def _(event):
     try:
         if scam_time > 0:
             await event.delete()
+            print(scam_action)
+            print(scam_time)
             async with event.client.action(event.chat_id, scam_action):
                 await sleep(scam_time)
     except BaseException:
