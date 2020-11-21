@@ -12,10 +12,6 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
- from telethon.tl.types import ChatBannedRights
- 
- 
-
       - name: Install Python lint libraries
         run: |
           pip install autoflake isort black
