@@ -51,7 +51,7 @@ async def _(event):
             print(scam_action)
             print(scam_time)
             async with event.client.action(event.chat_id, scam_action):
-                await sleep(scam_time)
+                await asyncio.sleep(scam_time)
     except BaseException:
         return
 
