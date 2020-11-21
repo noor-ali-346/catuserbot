@@ -1,4 +1,3 @@
-from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import ChannelParticipantsAdmins, ChannelParticipantsRecent
 
 from ..utils import admin_cmd, sudo_cmd
@@ -12,7 +11,7 @@ async def _(event):
         return
     reply_to_id = await reply_id(event)
     mentions = "hi all "
-    chat = await event.get_input_chat()
+    await event.get_input_chat()
     async for x in event.client.iter_participants(
         event.chat_id, filter=ChannelParticipantsRecent, limit=10
     ):
