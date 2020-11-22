@@ -13,7 +13,7 @@ async def _(event):
     mentions = "hi all "
     await event.get_input_chat()
     async for x in event.client.iter_participants(
-        event.chat_id, filter=ChannelParticipantsRecent, limit=40
+        event.chat_id, filter=ChannelParticipantsRecent, limit=30
     ):
         if x.id != event.client.uid:
             try:
