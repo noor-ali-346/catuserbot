@@ -121,7 +121,7 @@ async def set_no_log_p_m(event):
 
 CMD_HELP.update(
     {
-        "log_chats": "**Plugin : **`logchats`\
+        "logchats": "**Plugin : **`logchats`\
         \n\n  •  **Syntax : **`.save` :\
         \n  •  **Function : **__Saves tagged message in private group .__\
         \n\n  •  **Syntax : **`.log`:\
