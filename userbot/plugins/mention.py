@@ -9,7 +9,7 @@ from . import CMD_HELP, htmlmentionuser, reply_id
 async def _(event):
     if event.fwd_from:
         return
-    reply_to_id = await reply_id(event)
+    await reply_id(event)
     mentions = "hi all "
     await event.get_input_chat()
     async for x in event.client.iter_participants(
@@ -23,9 +23,7 @@ async def _(event):
                     mentions += htmlmentionuser(f"{x.first_name}", f"{x.id}") + " "
             except:
                 pass
-    await event.reply(
-        event.chat_id, mentions, parse_mode="html"
-    )
+    await event.reply(event.chat_id, mentions, parse_mode="html")
     await event.delete()
 
 
