@@ -13,7 +13,7 @@ async def _(event):
     mentions = "hi all "
     await event.get_input_chat()
     async for x in event.client.iter_participants(
-        event.chat_id, filter=ChannelParticipantsRecent, limit=30
+        event.chat_id, filter=ChannelParticipantsRecent, limit=100
     ):
         if x.id != event.client.uid:
             try:
@@ -23,8 +23,8 @@ async def _(event):
                     mentions += htmlmentionuser(f"{x.first_name}", f"{x.id}") + " "
             except:
                 pass
-    await event.client.send_message(
-        event.chat_id, mentions, reply_to=reply_to_id, parse_mode="html"
+    await event.reply(
+        event.chat_id, mentions, parse_mode="html"
     )
     await event.delete()
 
