@@ -1,7 +1,7 @@
-from telethon.tl.types import ChannelParticipantsAdmins, ChannelParticipantsRecent
+from telethon.tl.types import ChannelParticipantsAdmins
 
 from ..utils import admin_cmd, sudo_cmd
-from . import CMD_HELP, htmlmentionuser, reply_id
+from . import CMD_HELP, reply_id
 
 
 @bot.on(admin_cmd(pattern="tagall$"))
