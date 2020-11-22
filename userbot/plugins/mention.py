@@ -23,7 +23,7 @@ async def _(event):
                     mentions += htmlmentionuser(f"{x.first_name}", f"{x.id}") + " "
             except:
                 pass
-    await event.reply(event.chat_id, mentions, parse_mode="html")
+    await event.reply(mentions, parse_mode="html")
     await event.delete()
 
 
