@@ -9,21 +9,14 @@ from . import CMD_HELP, htmlmentionuser, reply_id
 async def _(event):
     if event.fwd_from:
         return
-    await reply_id(event)
-    mentions = "hi all "
-    await event.get_input_chat()
-    async for x in event.client.iter_participants(
-        event.chat_id, filter=ChannelParticipantsRecent, limit=20
-    ):
-        if x.id != event.client.uid:
-            try:
-                if x.username:
-                    mentions += htmlmentionuser(f"@{x.username}", f"{x.id}") + " "
-                else:
-                    mentions += htmlmentionuser(f"{x.first_name}", f"{x.id}") + " "
-            except:
-                pass
-    await event.reply(mentions, parse_mode="html")
+    reply_to_id = event.message
+    if event.reply_to_msg_id:
+        reply_to_id = await event.get_reply_message()
+    mentions = "@all"
+    chat = await event.get_input_chat()
+    async for x in event.client.iter_participants(chat, 100):
+        mentions += f"[\u2063](tg://user?id={x.id})"
+    await reply_to_id.reply(mentions)
     await event.delete()
 
 
@@ -100,7 +93,7 @@ CMD_HELP.update(
   •  **Function : **__tags recent 100 persons in the group may not work for all__  
 
   •  **Syntax : **`.tagall`
-  •  **Function : **__tags recent 100 persons in the group with usernames__ 
+  •  **Function : **__tags recent 100 persons in the group may not work for all__ 
 
   •  **Syntax : **`.report`
   •  **Function : **__tags admins in group__  
